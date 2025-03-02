@@ -1,0 +1,7 @@
+{
+  "/lost-found/page": "app/lost-found/page.js",
+  "/chat/page": "app/chat/page.js",
+  "/auth/page": "app/auth/page.js",
+  "/lost-found/create-post/page": "app/lost-found/create-post/page.js",
+  "/page": "app/page.js"
+}
