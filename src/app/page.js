@@ -33,8 +33,8 @@ export default function Home() {
           </h1>
           <p className="text-md md:text-xl text-gray-600 mb-8">
             Descubre cómo nuestra plataforma de aprendizaje impulsada por
-            inteligencia artificial empodera a estudiantes y docentes con
-            herramientas innovadoras y contenidos adaptados a sus necesidades.{" "}
+            inteligencia artificial empodera a estudiantes con herramientas
+            innovadoras y contenidos adaptados a sus necesidades.{" "}
           </p>
           <div className="text-center mb-8">
             <p className="text-md md:text-lg text-gray-600">
