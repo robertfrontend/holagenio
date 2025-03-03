@@ -40,6 +40,28 @@ export async function uploadFile(file, name) {
   }
 }
 
+export const getUserData = async () => {
+  const user = auth.currentUser;
+  console.log(auth, "auth");
+  if (user) {
+    const uid = user.uid;
+
+    try {
+      const userDoc = await db.collection("users").doc(uid).get();
+      if (userDoc.exists) {
+        console.log("User Data:", userDoc.data());
+        return userDoc.data();
+      } else {
+        console.log("No such document!");
+      }
+    } catch (error) {
+      console.error("Error getting document:", error);
+    }
+  } else {
+    console.log("No user is signed in.");
+  }
+};
+
 export const auth = getAuth(app);
 
 export { app };

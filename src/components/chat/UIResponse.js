@@ -18,7 +18,11 @@ const UIResponse = ({ msg, index }) => {
   );
   const PComponent = ({ children, ...props }) => <p {...props}>{children}</p>;
   return (
-    <div key={index} className={`mb-2 p-2  flex flex-col`}>
+    <div
+      key={index}
+      className={`mb-2 p-2  flex flex-col`}
+      id={`response-${index}`}
+    >
       {msg.sender === "ai" && (
         <div className="pt-4 pb-10">
           <header className="flex items-center">

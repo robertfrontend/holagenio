@@ -1,6 +1,8 @@
 import getChatAI from "@/api/openai";
 import { Send } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { auth, getUserData } from "@/firebase/firebaseConfig";
 
 import UIResponse from "./UIResponse";
 
@@ -9,8 +11,19 @@ const ChatWindow = () => {
   const [input, setInput] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
   const [firstTime, setFirstTime] = useState(true);
+  const [numberSection, setNumberSection] = useState(0);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getUserData();
+      console.log(response, "response");
+    };
+
+    fetchData();
+  }, []);
 
   const handleSend = async () => {
+    setNumberSection((prev) => prev + 1);
     setFirstTime(false);
     setIsLoaded(true);
     setInput("");
@@ -22,12 +35,18 @@ const ChatWindow = () => {
       { sender: "ai", text: response.response, title: response.title },
     ]);
 
-    console.log(response.title, "response CHATT");
+    const section = document.querySelector(
+      `[section-id="${response.sectionId}"]`
+    );
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
 
     setIsLoaded(false);
   };
 
   const handleSugestions = async (message) => {
+    setNumberSection((prev) => prev + 1);
     setInput(message);
     setFirstTime(false);
     setIsLoaded(true);
@@ -44,7 +63,8 @@ const ChatWindow = () => {
   return (
     <div
       className="bg-white flex flex-col h-screen ml-auto border
-     border-gray-300 md:rounded-lg overflow-hidden pb-10 md:px-10"
+     border-gray-300 md:rounded-lg overflow-hidden pb-20 md:pb-10 md:px-10
+     "
     >
       <header className="p-4 text-center border-b">
         <h1 className="text-xl font-bold ">Platano Power AI</h1>
@@ -60,7 +80,7 @@ const ChatWindow = () => {
           </div>
         )}
       </div>
-      <div className="flex border-t border-gray-100 bg-gray-50">
+      <div className="flex  border rounded-xl shadow-md border-gray-300 mx-2 md:mx-0">
         <input
           type="text"
           value={input}
@@ -73,15 +93,15 @@ const ChatWindow = () => {
             }
           }}
           placeholder="Escribe tu mensaje..."
-          className="flex-1 p-2 border border-gray-100 rounded mr-2 w-full pl-4 pt-2 pb-12 focus:outline-none bg-gray-50
+          className="flex-1 p-2  rounded mr-2 w-full pl-4 pt-2 pb-12 focus:outline-none 
           font-light 
           "
         />
         <button
           onClick={() => !isLoaded && handleSend()}
-          className="p-2  text-white rounded pr-10"
+          className="p-2 text-white rounded pr-4 bg-blue-100"
         >
-          <Send size={20} className="text-gray-600" />
+          <Send size={20} className="text-blue-600" />
         </button>
       </div>
     </div>
@@ -94,7 +114,7 @@ const Suggestions = ({ handleSugestions }) => {
       <div>
         <h1 className="text-3xl">Good Morning Robert!</h1>
       </div>
-      <div className="grid grid-cols-3 gap-4 justify-around my-4 text-md">
+      <div className="grid md:grid-cols-3 gap-4 justify-around my-4 text-md">
         <div
           className="border border-gray-200 p-4 rounded-lg cursor-pointer"
           onClick={() => handleSugestions("¿Cuál es la capital de Francia?")}

@@ -10,7 +10,6 @@ export const checkAuthStatus = (callback) => {
   return onAuthStateChanged(auth, (user) => {
     if (user) {
       callback({ isAuthenticated: true, user });
-    } else {
       callback({ isAuthenticated: false, user: null });
     }
   });
