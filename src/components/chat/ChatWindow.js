@@ -91,7 +91,7 @@ const ChatWindow = () => {
       <div
         className="flex border rounded-xl shadow-md 
       border-gray-300 mx-2 md:mx-2 pl-2
-      fixed bottom-[6em] left-0 right-0 bg-white z-10 md:static
+      fixed bottom-6 left-0 right-0 bg-white z-10 md:static
       "
       >
         <input
