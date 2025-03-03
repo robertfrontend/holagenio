@@ -10,11 +10,11 @@ export default function Page() {
     >
       <div className="grid md:grid-cols-[240px_1fr] w-full h-full">
         <div className="bg-gray-50 h-full p-4 hidden md:block">
-          <h2 className="text-lg font-bold mb-4">Chat History</h2>
+          <h2 className="text-lg font-bold mb-4">Mis notas</h2>
           <ul className="space-y-2">
-            <li className="p-2 bg-white rounded shadow">Chat 1</li>
-            <li className="p-2 bg-white rounded shadow">Chat 2</li>
-            <li className="p-2 bg-white rounded shadow">Chat 3</li>
+            <li className="border-b">Juan Pablo Duarte Tarea</li>
+            <li className="border-b">El faro a colon</li>
+            <li className="border-b">Las hermanas Mirabal</li>
           </ul>
           <a
             href="/central"

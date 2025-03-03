@@ -22,6 +22,14 @@ const ChatWindow = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const meta = document.createElement("meta");
+    meta.name = "viewport";
+    meta.content =
+      "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no";
+    document.head.appendChild(meta);
+  }, []);
+
   const handleSend = async () => {
     setNumberSection((prev) => prev + 1);
     setFirstTime(false);
@@ -80,7 +88,7 @@ const ChatWindow = () => {
           </div>
         )}
       </div>
-      <div className="flex  border rounded-xl shadow-md border-gray-300 mx-2 md:mx-0">
+      <div className="flex  border rounded-xl shadow-md border-gray-300 mx-2 md:mx-2 pl-2">
         <input
           type="text"
           value={input}
@@ -123,11 +131,9 @@ const Suggestions = ({ handleSugestions }) => {
         </div>
         <div
           className="border border-gray-200 p-4 rounded-lg cursor-pointer"
-          onClick={() =>
-            handleSugestions("Explícame la teoría de la relatividad")
-          }
+          onClick={() => handleSugestions("Quien fue Juan Pablo Duarte?")}
         >
-          <p className="text-center">Explícame la teoría de la relatividad</p>
+          <p className="text-center">¿Quien fue Juan Pablo Duarte?</p>
         </div>
         <div
           className="border border-gray-200 p-4 rounded-lg cursor-pointer"

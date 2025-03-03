@@ -1,3 +1,4 @@
+import { Bookmark, ListRestart } from "lucide-react";
 import Markdown from "markdown-to-jsx";
 
 const UIResponse = ({ msg, index }) => {
@@ -70,6 +71,12 @@ const UIResponse = ({ msg, index }) => {
                     className: "text-lg font-normal py-2",
                   },
                 },
+                strong: {
+                  component: "strong",
+                  props: {
+                    className: "font-semibold",
+                  },
+                },
                 ul: {
                   component: MyParagraph,
                   props: {
@@ -81,6 +88,20 @@ const UIResponse = ({ msg, index }) => {
           >
             {msg.text}
           </Markdown>
+          <div className="w-full flex flex-col md:flex-row justify-center items-center">
+            <button
+              className="
+             text-gray-500 px-4 py-2 rounded flex justify-start items-start"
+            >
+              <Bookmark size={20} className="mx-2" /> Guardar en mis notas
+            </button>
+            <button
+              className="
+             text-gray-500 px-4 py-2 rounded flex justify-center items-center"
+            >
+              <ListRestart size={20} className="mx-2" /> Resumir esta respuesta
+            </button>
+          </div>
         </div>
       )}
       {msg.sender === "user" && (
