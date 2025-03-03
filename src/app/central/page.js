@@ -50,10 +50,10 @@ const SubjectCards = () => {
         className="bg-[#ff47562f] text-[#ff4756] shadow-md rounded-lg p-6 cursor-pointer hover:shadow-lg transition
         flex flex-row items-center justify-center"
       >
-        <Calculator size={30} />
-        <h2 className="text-2xl font-normal ">Matemáticas</h2>
+        {/* <Calculator size={30} /> */}
+        <h2 className="text-2xl font-normal ">Start Chat</h2>
       </div>
-      <div
+      {/* <div
         className="bg-[#ff47562f] text-[#ff4756] shadow-md rounded-lg p-6 cursor-pointer hover:shadow-lg transition
         flex flex-row items-center justify-center"
       >
@@ -73,7 +73,7 @@ const SubjectCards = () => {
       >
         <Languages size={30} />
         <h2 className="text-2xl font-normal ">Inglés</h2>
-      </div>
+      </div> */}
     </div>
   );
 };

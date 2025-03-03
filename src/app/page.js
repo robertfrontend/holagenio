@@ -42,7 +42,7 @@ export default function Home() {
             </p> */}
           </div>
           <div className="text-center flex justify-center items-center">
-            <Link href={"/auth"}>
+            <Link href={"/central"}>
               <button className="px-6 py-3 bg-[#ff47562f] text-[#ff4756] font-semibold rounded-md flex items-center justify-center space-x-2">
                 Únete a la lista de espera <ArrowRight size={20} />
               </button>
