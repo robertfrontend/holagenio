@@ -17,16 +17,7 @@ export default function Home() {
         justify-center 
         overflow-hidden
       "
-        // Opcional: puedes utilizar un background con un patrón de cuadrícula
-        // usando una imagen o un gradient especial
-        style={{
-          backgroundImage:
-            "url(https://i.postimg.cc/tJVbSv8D/0a352d89-c2a0-478a-9131-7823fadb4681.jpg)",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "100%",
-        }}
       >
-        {/* Contenido principal del Hero */}
         <div className="text-center px-4 max-w-2xl">
           <h1 className="text-2xl md:text-5xl font-bold mb-4">
             Aprende mas rápido, impulsa tu aprendizaje.
@@ -59,7 +50,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Sección secundaria (por ejemplo, Deep Tutor) */}
         <div className="text-center mt-16 px-4 max-w-xl">
           <h2 className="text-2xl font-semibold mb-2">
             Introducing Deep Tutor

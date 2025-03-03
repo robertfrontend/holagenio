@@ -20,7 +20,19 @@ export default function RootLayout({ children }) {
         <Analytics />
         <Header />
         {/* <div className="flex flex-col min-h-screen bg-background w-full  md:mx-auto pt-20 relative px-4"> */}
-        <div className="">{children}</div>
+        <div
+          className="relative full"
+          // Opcional: puedes utilizar un background con un patrón de cuadrícula
+          // usando una imagen o un gradient especial
+          style={{
+            backgroundImage:
+              "url(https://i.postimg.cc/tJVbSv8D/0a352d89-c2a0-478a-9131-7823fadb4681.jpg)",
+            backgroundRepeat: "repeat",
+            backgroundSize: "100%",
+          }}
+        >
+          {children}
+        </div>
         <div className="text-center py-8">
           <span className="text-sm text-gray-500 sm:text-center">
             © 2025 Domaprende.
