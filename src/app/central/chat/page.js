@@ -8,8 +8,8 @@ export default function Page() {
       bg-white flex flex-row items-center justify-center z-[1000]
     "
     >
-      <div className="grid grid-cols-[240px_1fr] w-full h-full">
-        <div className="bg-gray-200 h-full p-4">
+      <div className="grid md:grid-cols-[240px_1fr] w-full h-full">
+        <div className="bg-gray-50 h-full p-4 hidden md:block">
           <h2 className="text-lg font-bold mb-4">Chat History</h2>
           <ul className="space-y-2">
             <li className="p-2 bg-white rounded shadow">Chat 1</li>

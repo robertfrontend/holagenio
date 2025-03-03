@@ -2,15 +2,16 @@ import getChatAI from "@/api/openai";
 import { Send } from "lucide-react";
 import React, { useState } from "react";
 
-import Markdown from "markdown-to-jsx";
+import UIResponse from "./UIResponse";
 
 const ChatWindow = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
-
   const [isLoaded, setIsLoaded] = useState(false);
+  const [firstTime, setFirstTime] = useState(true);
 
   const handleSend = async () => {
+    setFirstTime(false);
     setIsLoaded(true);
     setInput("");
     const response = await getChatAI(input);
@@ -26,27 +27,30 @@ const ChatWindow = () => {
     setIsLoaded(false);
   };
 
-  const getAIResponse = async (message) => {
-    try {
-      const response = await getChatAI(message);
-    } catch (error) {
-      console.log(error);
-    }
-    // return `AI response to "${message}"`;
+  const handleSugestions = async (message) => {
+    setInput(message);
+    setFirstTime(false);
+    setIsLoaded(true);
+    const response = await getChatAI(message);
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { sender: "user", text: message },
+      { sender: "ai", text: response.response, title: response.title },
+    ]);
+    setInput("");
+    setIsLoaded(false);
   };
 
   return (
     <div
       className="bg-white flex flex-col h-screen ml-auto border
-     border-gray-300 md:rounded-lg overflow-hidden
-        pb-10
-        px-10
-     "
+     border-gray-300 md:rounded-lg overflow-hidden pb-10 md:px-10"
     >
-      <header className="p-4 text-center border">
-        <h1 className="text-xl font-bold ">Matematicas AI</h1>
+      <header className="p-4 text-center border-b">
+        <h1 className="text-xl font-bold ">Platano Power AI</h1>
       </header>
-      <div className="flex-1 p-4 overflow-y-auto">
+      {firstTime && <Suggestions handleSugestions={handleSugestions} />}
+      <div className="flex-1 p-2 md:p-4 overflow-y-auto">
         {messages.map((msg, index) => (
           <UIResponse msg={msg} index={index} />
         ))}
@@ -56,7 +60,7 @@ const ChatWindow = () => {
           </div>
         )}
       </div>
-      <div className="flex border-t border-gray-100 bg-gray-100">
+      <div className="flex border-t border-gray-100 bg-gray-50">
         <input
           type="text"
           value={input}
@@ -69,7 +73,9 @@ const ChatWindow = () => {
             }
           }}
           placeholder="Escribe tu mensaje..."
-          className="flex-1 p-2 border border-gray-100 rounded mr-2 w-full pl-4 pt-2 pb-12 text-xl focus:outline-none bg-gray-100"
+          className="flex-1 p-2 border border-gray-100 rounded mr-2 w-full pl-4 pt-2 pb-12 focus:outline-none bg-gray-50
+          font-light 
+          "
         />
         <button
           onClick={() => !isLoaded && handleSend()}
@@ -82,73 +88,35 @@ const ChatWindow = () => {
   );
 };
 
-const UIResponse = ({ msg, index }) => {
-  console.log(msg, "msg");
-  const MyParagraph = ({ children, ...props }) => (
-    <div {...props}>{children}</div>
-  );
+const Suggestions = ({ handleSugestions }) => {
   return (
-    <div key={index} className={`mb-2 p-2  flex flex-col`}>
-      {msg.sender === "ai" && (
-        <div className="pt-4 pb-10">
-          <header className="flex items-center">
-            <img
-              src="https://i.postimg.cc/sXC2b0kn/Instagram-Post.png"
-              alt=""
-              className="w-8 h-8 rounded-full inline-block mr-2"
-            />
-            Platano Matematico Power
-          </header>
-          <h2 className="text-2xl font-semibold mt-4 border-b mb-6">
-            {msg.title}
-          </h2>
-          <Markdown
-            className="text-lg"
-            options={{
-              overrides: {
-                h1: {
-                  component: MyParagraph,
-                  props: {
-                    className: "text-5xl font-semibold",
-                  },
-                },
-                h2: {
-                  component: MyParagraph,
-                  props: {
-                    className: "text-4xl font-semibold",
-                  },
-                },
-                h3: {
-                  component: MyParagraph,
-                  props: {
-                    className: "text-3xl font-semibold",
-                  },
-                },
-                h4: {
-                  component: MyParagraph,
-                  props: {
-                    className: "text-2xl font-semibold",
-                  },
-                },
-                p: {
-                  component: MyParagraph,
-                  props: {
-                    className: "text-lg font-semibold",
-                  },
-                },
-              },
-            }}
-          >
-            {msg.text}
-          </Markdown>
+    <section className="text-center py-10">
+      <div>
+        <h1 className="text-3xl">Good Morning Robert!</h1>
+      </div>
+      <div className="grid grid-cols-3 gap-4 justify-around my-4 text-md">
+        <div
+          className="border border-gray-200 p-4 rounded-lg cursor-pointer"
+          onClick={() => handleSugestions("¿Cuál es la capital de Francia?")}
+        >
+          <p className="text-center">¿Cuál es la capital de Francia?</p>
         </div>
-      )}
-      {msg.sender === "user" && (
-        <div className="bg-[#a9a9a923] text-lg py-4 px-6 rounded text-left ml-auto">
-          <p>{msg.text}</p>
+        <div
+          className="border border-gray-200 p-4 rounded-lg cursor-pointer"
+          onClick={() =>
+            handleSugestions("Explícame la teoría de la relatividad")
+          }
+        >
+          <p className="text-center">Explícame la teoría de la relatividad</p>
         </div>
-      )}
-    </div>
+        <div
+          className="border border-gray-200 p-4 rounded-lg cursor-pointer"
+          onClick={() => handleSugestions("¿Qué es el aprendizaje automático?")}
+        >
+          <p className="text-center">¿Qué es el aprendizaje automático?</p>
+        </div>
+      </div>
+    </section>
   );
 };
 
