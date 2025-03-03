@@ -71,7 +71,7 @@ const ChatWindow = () => {
   return (
     <div
       className="bg-white flex flex-col h-screen ml-auto border
-     border-gray-300 md:rounded-lg overflow-hidden pb-20 md:pb-10 md:px-10
+     border-gray-300 md:rounded-lg overflow-hidden pb-[10em] md:pb-10 md:px-10
      "
     >
       <header className="p-4 text-center border-b">
@@ -88,7 +88,12 @@ const ChatWindow = () => {
           </div>
         )}
       </div>
-      <div className="flex  border rounded-xl shadow-md border-gray-300 mx-2 md:mx-2 pl-2">
+      <div
+        className="flex border rounded-xl shadow-md 
+      border-gray-300 mx-2 md:mx-2 pl-2
+      fixed bottom-[6em] left-0 right-0 bg-white z-10 md:static
+      "
+      >
         <input
           type="text"
           value={input}
