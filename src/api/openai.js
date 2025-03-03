@@ -5,7 +5,7 @@ import axios from "axios";
 const handleComplemetal = async (prompt) => {};
 
 const getChatAI = async (prompt) => {
-  const apiKey = "";
+  const apiKey = process.env.OPENAI_API_KEY;
 
   const response = await axios.post(
     "https://api.openai.com/v1/chat/completions",

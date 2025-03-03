@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Calculator, Languages, Sailboat, BookA } from "lucide-react";
 import AuthForm, { checkAuthStatus } from "@/components/AuthForm";
 import ChatWindow from "@/components/chat/ChatWindow";
+import Link from "next/link";
 
 export default function Page() {
   const [showAuthForm, setShowAuthForm] = useState(true);
@@ -46,13 +47,15 @@ const subjects = [
 const SubjectCards = () => {
   return (
     <div className="flex flex-col gap-6">
-      <div
-        className="bg-[#ff47562f] text-[#ff4756] shadow-md rounded-lg p-6 cursor-pointer hover:shadow-lg transition
+      <Link href="/central/chat">
+        <div
+          className="bg-[#ff47562f] text-[#ff4756] shadow-md rounded-lg p-6 cursor-pointer hover:shadow-lg transition
         flex flex-row items-center justify-center"
-      >
-        {/* <Calculator size={30} /> */}
-        <h2 className="text-2xl font-normal ">Start Chat</h2>
-      </div>
+        >
+          {/* <Calculator size={30} /> */}
+          <h2 className="text-2xl font-normal ">Start Chat</h2>
+        </div>
+      </Link>
       {/* <div
         className="bg-[#ff47562f] text-[#ff4756] shadow-md rounded-lg p-6 cursor-pointer hover:shadow-lg transition
         flex flex-row items-center justify-center"
