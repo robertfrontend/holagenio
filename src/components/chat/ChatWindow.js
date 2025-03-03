@@ -8,7 +8,11 @@ const ChatWindow = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
 
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const handleSend = async () => {
+    setIsLoaded(true);
+    setInput("");
     const response = await getChatAI(input);
 
     setMessages((prevMessages) => [
@@ -19,7 +23,7 @@ const ChatWindow = () => {
 
     console.log(response.title, "response CHATT");
 
-    setInput("");
+    setIsLoaded(false);
   };
 
   const getAIResponse = async (message) => {
@@ -36,6 +40,7 @@ const ChatWindow = () => {
       className="bg-white flex flex-col h-screen ml-auto border
      border-gray-300 md:rounded-lg overflow-hidden
         pb-10
+        px-10
      "
     >
       <header className="p-4 text-center border">
@@ -43,34 +48,106 @@ const ChatWindow = () => {
       </header>
       <div className="flex-1 p-4 overflow-y-auto">
         {messages.map((msg, index) => (
-          <div
-            key={index}
-            className={`mb-2 p-2 rounded ${msg.sender === "user" ? "bg-green-200 self-end" : "bg-gray-200 self-start"}`}
-          >
-            {msg.sender === "ai" && (
-              <h2 className="text-xl font-semibold">{msg.title}</h2>
-            )}
-            <p>response: {msg.text}</p>
-          </div>
+          <UIResponse msg={msg} index={index} />
         ))}
+        {isLoaded && (
+          <div className="text-center">
+            <p className="text-gray-400">AI is typing...</p>
+          </div>
+        )}
       </div>
-      <div className="flex p-4 border-t border-gray-300">
+      <div className="flex border-t border-gray-100 bg-gray-100">
         <input
           type="text"
           value={input}
           min={2}
           max={10}
           onChange={(e) => setInput(e.target.value)}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              !isLoaded && handleSend();
+            }
+          }}
           placeholder="Escribe tu mensaje..."
-          className="flex-1 p-2 border border-gray-300 rounded mr-2 w-full py-5 text-lg focus:outline-none"
+          className="flex-1 p-2 border border-gray-100 rounded mr-2 w-full pl-4 pt-2 pb-12 text-xl focus:outline-none bg-gray-100"
         />
         <button
-          onClick={() => handleSend()}
-          className="p-2  text-white rounded"
+          onClick={() => !isLoaded && handleSend()}
+          className="p-2  text-white rounded pr-10"
         >
           <Send size={20} className="text-gray-600" />
         </button>
       </div>
+    </div>
+  );
+};
+
+const UIResponse = ({ msg, index }) => {
+  console.log(msg, "msg");
+  const MyParagraph = ({ children, ...props }) => (
+    <div {...props}>{children}</div>
+  );
+  return (
+    <div key={index} className={`mb-2 p-2  flex flex-col`}>
+      {msg.sender === "ai" && (
+        <div className="pt-4 pb-10">
+          <header className="flex items-center">
+            <img
+              src="https://i.postimg.cc/sXC2b0kn/Instagram-Post.png"
+              alt=""
+              className="w-8 h-8 rounded-full inline-block mr-2"
+            />
+            Platano Matematico Power
+          </header>
+          <h2 className="text-2xl font-semibold mt-4 border-b mb-6">
+            {msg.title}
+          </h2>
+          <Markdown
+            className="text-lg"
+            options={{
+              overrides: {
+                h1: {
+                  component: MyParagraph,
+                  props: {
+                    className: "text-5xl font-semibold",
+                  },
+                },
+                h2: {
+                  component: MyParagraph,
+                  props: {
+                    className: "text-4xl font-semibold",
+                  },
+                },
+                h3: {
+                  component: MyParagraph,
+                  props: {
+                    className: "text-3xl font-semibold",
+                  },
+                },
+                h4: {
+                  component: MyParagraph,
+                  props: {
+                    className: "text-2xl font-semibold",
+                  },
+                },
+                p: {
+                  component: MyParagraph,
+                  props: {
+                    className: "text-lg font-semibold",
+                  },
+                },
+              },
+            }}
+          >
+            {msg.text}
+          </Markdown>
+        </div>
+      )}
+      {msg.sender === "user" && (
+        <div className="bg-[#a9a9a923] text-lg py-4 px-6 rounded text-left ml-auto">
+          <p>{msg.text}</p>
+        </div>
+      )}
     </div>
   );
 };
