@@ -13,14 +13,9 @@ const ChatWindow = () => {
   const [firstTime, setFirstTime] = useState(true);
   const [numberSection, setNumberSection] = useState(0);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await getUserData();
-      console.log(response, "response");
-    };
+  const [helper, setSelectHelper] = useState("");
 
-    fetchData();
-  }, []);
+  useEffect(() => {}, []);
 
   useEffect(() => {
     const meta = document.createElement("meta");
@@ -30,16 +25,22 @@ const ChatWindow = () => {
     document.head.appendChild(meta);
   }, []);
 
-  const handleSend = async () => {
+  const handleChatAI = async (handletext, isResume) => {
     setNumberSection((prev) => prev + 1);
     setFirstTime(false);
     setIsLoaded(true);
     setInput("");
-    const response = await getChatAI(input);
+
+    const prompt = helper ? `${helper}: ${handletext}` : handletext;
+
+    const response = await getChatAI(prompt);
 
     setMessages((prevMessages) => [
       ...prevMessages,
-      { sender: "user", text: input },
+      {
+        sender: "user",
+        text: isResume ? "Resumiendo respuesta..." : handletext,
+      },
       { sender: "ai", text: response.response, title: response.title },
     ]);
 
@@ -53,19 +54,24 @@ const ChatWindow = () => {
     setIsLoaded(false);
   };
 
+  const handleSend = async () => {
+    handleChatAI(input, false);
+  };
+
   const handleSugestions = async (message) => {
-    setNumberSection((prev) => prev + 1);
-    setInput(message);
-    setFirstTime(false);
-    setIsLoaded(true);
-    const response = await getChatAI(message);
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { sender: "user", text: message },
-      { sender: "ai", text: response.response, title: response.title },
-    ]);
-    setInput("");
-    setIsLoaded(false);
+    handleChatAI(message, false);
+  };
+
+  const handleResumeResponse = async (message) => {
+    console.log(message, "message to resume");
+    handleChatAI(
+      `Quiero que me hagas un resumen de este text largo: ${message.text}`,
+      true
+    );
+  };
+
+  const handleHelperSelect = (value) => {
+    setSelectHelper(value);
   };
 
   return (
@@ -80,7 +86,11 @@ const ChatWindow = () => {
       {firstTime && <Suggestions handleSugestions={handleSugestions} />}
       <div className="flex-1 p-2 md:p-4 overflow-y-auto">
         {messages.map((msg, index) => (
-          <UIResponse msg={msg} index={index} />
+          <UIResponse
+            msg={msg}
+            index={index}
+            handleResumeResponse={handleResumeResponse}
+          />
         ))}
         {isLoaded && (
           <div className="text-center">
@@ -89,33 +99,56 @@ const ChatWindow = () => {
         )}
       </div>
       <div
-        className="flex border rounded-xl shadow-md 
-      border-gray-300 mx-2 md:mx-2 pl-2
-      fixed bottom-6 left-0 right-0 bg-white z-10 md:static
+        className="flex flex-col border rounded-xl shadow-md 
+       mx-2 md:mx-2 px-2 pb-2
+      fixed bottom-6 left-0 right-0 z-10 md:static bg-white
+      
       "
       >
-        <input
-          type="text"
-          value={input}
-          min={2}
-          max={10}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyPress={(e) => {
-            if (e.key === "Enter") {
-              !isLoaded && handleSend();
-            }
-          }}
-          placeholder="Escribe tu mensaje..."
-          className="flex-1 p-2  rounded mr-2 w-full pl-4 pt-2 pb-12 focus:outline-none 
+        <select
+          onChange={(e) => handleHelperSelect(e.target.value)}
+          className="p-2 mr-2 w-full pl-4 pt-2 focus:outline-none font-light
+            bg-white border border-blue-100 my-2 rounded px-2
+          "
+        >
+          <option value="">Selecciona una opción</option>
+          <option value="Ayudame con mi Ingles">Ayúdame con mi Inglés</option>
+          <option value="Ayudame con mi Matemáticas">
+            Ayúdame con mi Matemáticas
+          </option>
+          <option value="Ayudame con mi Ciencias">
+            Ayúdame con mi Ciencias
+          </option>
+          <option value="Ayudame con mi Historia">
+            Ayúdame con mi Historia
+          </option>
+        </select>
+
+        <div className="border bg-white mt-2 flex flex-row items-center rounded">
+          <input
+            type="text"
+            value={input}
+            min={2}
+            max={10}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                !isLoaded && handleSend();
+              }
+            }}
+            placeholder="Escribe tu mensaje..."
+            className="flex-1 p-2  rounded mr-2 w-full pl-4 pt-2 pb-12 focus:outline-none
           font-light 
           "
-        />
-        <button
-          onClick={() => !isLoaded && handleSend()}
-          className="p-2 text-white rounded pr-4 bg-blue-100"
-        >
-          <Send size={20} className="text-blue-600" />
-        </button>
+          />
+          <button
+            onClick={() => !isLoaded && handleSend()}
+            className="p-2 text-blue-600 rounded pr-4 bg-blue-100 flex items-center"
+          >
+            Send
+            <Send size={20} className="text-blue-600 ml-2" />
+          </button>
+        </div>
       </div>
     </div>
   );

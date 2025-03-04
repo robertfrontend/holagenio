@@ -1,7 +1,7 @@
 import { Bookmark, ListRestart } from "lucide-react";
 import Markdown from "markdown-to-jsx";
 
-const UIResponse = ({ msg, index }) => {
+const UIResponse = ({ msg, index, handleResumeResponse }) => {
   const MyParagraph = ({ children, ...props }) => (
     <div {...props}>{children}</div>
   );
@@ -44,43 +44,46 @@ const UIResponse = ({ msg, index }) => {
                 h1: {
                   component: H1Component,
                   props: {
-                    className: "text-5xl font-semibold ",
+                    className: "text-3xl font-semibold border-b text-gray-700",
                   },
                 },
                 h2: {
                   component: H2Component,
                   props: {
-                    className: "text-4xl font-semibold ",
+                    className: "text-2xl font-semibold underline text-gray-700",
                   },
                 },
                 h3: {
                   component: H3Component,
                   props: {
-                    className: "text-2xl font-semibold py-6",
+                    className:
+                      "text-xl md:text-2xl font-semibold py-4  md:py-6 underline text-gray-700",
                   },
                 },
                 h4: {
                   component: H4Component,
                   props: {
-                    className: "text-xl md:text-2xl font-semibold py-6",
+                    className:
+                      "text-lg md:text-2xl font-semibold py-4  md:py-6 text-gray-700",
                   },
                 },
                 p: {
                   component: PComponent,
                   props: {
-                    className: "text-lg font-normal py-2",
+                    className: "text-md font-normal py-2 text-gray-700",
                   },
                 },
                 strong: {
                   component: "strong",
                   props: {
-                    className: "font-semibold",
+                    className: "font-semibold text-gray-70",
                   },
                 },
                 ul: {
                   component: MyParagraph,
                   props: {
-                    className: "px-6 list-disc list-inside",
+                    className:
+                      "text-[16px] md:text-xl px-2 md:px-6 list-disc list-inside",
                   },
                 },
               },
@@ -98,6 +101,7 @@ const UIResponse = ({ msg, index }) => {
             <button
               className="
              text-gray-500 px-4 py-2 rounded flex justify-center items-center"
+              onClick={() => handleResumeResponse(msg)}
             >
               <ListRestart size={20} className="mx-2" /> Resumir esta respuesta
             </button>

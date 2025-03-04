@@ -3,7 +3,9 @@ import axios from "axios";
 const handleComplemetal = async (prompt) => {};
 
 const getChatAI = async (prompt) => {
-  const apiKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY;
+  // const apiKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY;
+  const apiKey =
+    "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";
 
   const response = await axios.post(
     "https://api.openai.com/v1/chat/completions",
@@ -11,7 +13,7 @@ const getChatAI = async (prompt) => {
     {
       messages: [{ role: "user", content: prompt }],
       model: "gpt-4o-mini",
-      store: false,
+      store: true,
       response_format: {
         type: "json_schema",
         json_schema: {
