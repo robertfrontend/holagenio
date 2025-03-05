@@ -81,10 +81,10 @@ const ChatWindow = () => {
      "
     >
       <header className="p-4 text-center border-b">
-        <h1 className="text-xl font-bold ">Platano Power AI</h1>
+        <h1 className="text-xl font-bold ">Mi AI</h1>
       </header>
       {firstTime && <Suggestions handleSugestions={handleSugestions} />}
-      <div className="flex-1 p-2 md:p-4 overflow-y-auto">
+      <div className="flex-1 p-2 pb-4 md:p-4 overflow-y-auto">
         {messages.map((msg, index) => (
           <UIResponse
             msg={msg}
@@ -92,63 +92,80 @@ const ChatWindow = () => {
             handleResumeResponse={handleResumeResponse}
           />
         ))}
-        {isLoaded && (
-          <div className="text-center">
-            <p className="text-gray-400">AI is typing...</p>
-          </div>
-        )}
+        <div className="text-center pb-10">
+          {isLoaded && (
+            <div>
+              {" "}
+              <span className="loading loading-ring w-[60px] text-blue-600"></span>
+              <p className="text-blue-400">AI is typing...</p>
+            </div>
+          )}
+        </div>
       </div>
-      <div
-        className="flex flex-col border rounded-xl shadow-md 
+      <FloatedChat
+        handleHelperSelect={handleHelperSelect}
+        setInput={setInput}
+        handleSend={handleSend}
+        input={input}
+        isLoaded={isLoaded}
+      />
+    </div>
+  );
+};
+
+const FloatedChat = ({
+  handleHelperSelect,
+  setInput,
+  handleSend,
+  input,
+  isLoaded,
+}) => {
+  return (
+    <div
+      className="flex flex-col border rounded-xl shadow-md 
        mx-2 md:mx-2 px-2 pb-2
-      fixed bottom-6 left-0 right-0 z-10 md:static bg-white
-      
+        fixed bottom-6 left-0 right-0 z-10 md:static bg-white
       "
-      >
-        <select
-          onChange={(e) => handleHelperSelect(e.target.value)}
-          className="p-2 mr-2 w-full pl-4 pt-2 focus:outline-none font-light
+    >
+      <select
+        onChange={(e) => handleHelperSelect(e.target.value)}
+        className="p-2 mr-2 w-full pl-4 pt-2 focus:outline-none font-light
             bg-white border border-blue-100 my-2 rounded px-2
           "
-        >
-          <option value="">Selecciona una opción</option>
-          <option value="Ayudame con mi Ingles">Ayúdame con mi Inglés</option>
-          <option value="Ayudame con mi Matemáticas">
-            Ayúdame con mi Matemáticas
-          </option>
-          <option value="Ayudame con mi Ciencias">
-            Ayúdame con mi Ciencias
-          </option>
-          <option value="Ayudame con mi Historia">
-            Ayúdame con mi Historia
-          </option>
-        </select>
+      >
+        <option value="">Selecciona una opción</option>
+        <option value="Ayudame con mi Ingles">Ayúdame con mi Inglés</option>
+        <option value="Ayudame con mi Matemáticas">
+          Ayúdame con mi Matemáticas
+        </option>
+        <option value="Ayudame con mi Ciencias">Ayúdame con mi Ciencias</option>
+        <option value="Ayudame con mi Historia">Ayúdame con mi Historia</option>
+      </select>
 
-        <div className="border bg-white mt-2 flex flex-row items-center rounded">
-          <input
-            type="text"
-            value={input}
-            min={2}
-            max={10}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyPress={(e) => {
-              if (e.key === "Enter") {
-                !isLoaded && handleSend();
-              }
-            }}
-            placeholder="Escribe tu mensaje..."
-            className="flex-1 p-2  rounded mr-2 w-full pl-4 pt-2 pb-12 focus:outline-none
+      <div className="border bg-white mt-2 flex flex-row items-center rounded">
+        <input
+          type="text"
+          value={input}
+          min={2}
+          max={10}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              !isLoaded && handleSend();
+            }
+          }}
+          placeholder="Escribe tu mensaje..."
+          className="flex-1 p-2  rounded mr-2 w-full pl-4 pt-2 pb-12 focus:outline-none
           font-light 
           "
-          />
-          <button
-            onClick={() => !isLoaded && handleSend()}
-            className="p-2 text-blue-600 rounded pr-4 bg-blue-100 flex items-center"
-          >
-            Send
-            <Send size={20} className="text-blue-600 ml-2" />
-          </button>
-        </div>
+        />
+        <button
+          onClick={() => !isLoaded && handleSend()}
+          className="p-2 text-blue-600 rounded pr-4 flex items-center"
+        >
+          Send
+          <Send size={20} className="text-blue-600 ml-2" />
+        </button>
       </div>
     </div>
   );

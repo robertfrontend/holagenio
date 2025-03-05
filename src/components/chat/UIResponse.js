@@ -109,7 +109,7 @@ const UIResponse = ({ msg, index, handleResumeResponse }) => {
         </div>
       )}
       {msg.sender === "user" && (
-        <div className="bg-[#a9a9a923] text-lg py-4 px-6 rounded text-left ml-auto">
+        <div className="border border-gray-200 bg-gray-50 text-lg py-3 px-6 rounded text-left ml-auto">
           <p>{msg.text}</p>
         </div>
       )}
