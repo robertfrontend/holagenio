@@ -21,9 +21,13 @@ export default function Page() {
 
   return (
     <main className="flex flex-col min-h-screen bg-background w-full md:mx-auto pt-[10em] relative px-2 md:px-4">
-      <div className=" flex flex-col items-center justify-center w-[100%] md:w-[600px] min-h-[40vh] mx-auto pb-10 border border-gray-200 rounded-md bg-white shadow-lg p-6">
-        <header className="px-10 text-center">
-          <h1 className="text-4xl font-bold pt-4 text-gray-700">
+      <div
+        className=" flex flex-col items-center justify-center w-[100%] md:w-[600px]
+       min-h-[40vh] mx-auto pb-10 border border-gray-200 rounded-md
+       bg-white shadow-lg px-2 md:p-6"
+      >
+        <header className="px-4 pt-4 md:px-10 text-center">
+          <h1 className="text-3xl md:text-4xl font-bold pt-4 text-gray-700">
             Recetas rápida de comida
           </h1>
           <p className="mt-2 font-light">
@@ -71,7 +75,7 @@ export default function Page() {
 
         {/* -------- response UI  --------*/}
 
-        <div className="pb-2 px-10 pt-10 text-center">
+        <div className="pb-2 px-2 md:px-10 pt-10 text-center">
           {textresponse && (
             <div className="bg-blue-50 py-6 px-4 text-blue-600">
               <h4 className="text-xl font-semibold text-blue-700">
