@@ -4,10 +4,10 @@ import { ArrowRight } from "lucide-react";
 
 export default function Home() {
   return (
-    <main className="">
-      <section className="relative w-full min-h-[100vh] flex flex-col items-center justify-center overflow-hidden">
+    <main className="flex flex-col min-h-screen bg-background w-full md:mx-auto pt-[6em] md:pt-[10em] relative px-2 md:px-4">
+      <section className="relative w-full pt-10 flex flex-col items-center justify-center overflow-hidden">
         <div className="text-center px-4 max-w-2xl">
-          <h1 className="text-2xl md:text-5xl font-bold mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
             AI Para todo el mundo
           </h1>
           <p className="text-md md:text-xl text-gray-600 mb-8">
@@ -15,9 +15,9 @@ export default function Home() {
           </p>
           <div className="text-center mb-8">
             <p className="text-md md:text-lg text-gray-600">
-              <strong>Herramientas de:</strong> Aprendizaje, comida, inglés,
-              etc.
+              <strong>Herramientas de:</strong>
             </p>
+            <p>Aprendizaje, comida, inglés, etc.</p>
           </div>
           <div className="text-center flex justify-center items-center">
             <Link href={"/central"}>

@@ -47,7 +47,7 @@ const SubjectCard = ({ href, title, disabled }) => (
       className="border-b rounded-lg p-4 cursor-pointer 
       flex flex-row items-center justify-center"
     >
-      <h2 className="text-xl font-normal text-blue-600">{title}</h2>
+      <h2 className="text-lg md:text-xl font-normal text-blue-600">{title}</h2>
       <ChevronRight className="pl-2 text-blue-600" size={30} />
     </div>
   </Link>
