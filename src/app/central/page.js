@@ -42,16 +42,17 @@ export default function Page() {
     </main>
   );
 }
-const SubjectCard = ({ href, title, disabled }) => (
+const SubjectCard = ({ href, title, description, disabled }) => (
   <Link
     href={href}
-    className="w-full block my-4 md:my-6 border bg-gray-50 border-gray-300 p-4 px-4 cursor-pointer rounded-xl"
+    className="w-full block my-4 md:my-6 border bg-white border-gray-300 p-4 px-4 cursor-pointer rounded-xl"
   >
     <div className="flex items-center">
       <div>
         <h2 className="text-lg md:text-xl font-normal text-gray-800">
           {title}
         </h2>
+        <p className="text-gray-500 text-[14px] pr-10">{description}</p>
       </div>
       <div className="ml-auto">
         <ChevronRight className="pl-2 text-gray-600" size={30} />
@@ -69,9 +70,10 @@ const SubjectCards = () => {
     // },
     {
       href: "/central/chat",
-      title: "📚Chat Estudiar",
+      title: "📚Chat para Estudiar",
       description: "Chat especificamente para estudiar",
     },
+
     {
       href: "/hub/english",
       title: "🇺🇸 Chat para inglés",
@@ -82,6 +84,12 @@ const SubjectCards = () => {
       title: "👨‍🍳Recetas de comida ",
       description: "Chat especificamente para recetas",
       icon: <ChefHat />,
+    },
+    {
+      href: "/central",
+      title: "🧍‍♂️Mi mejor amigo (muy pronto...)",
+      description:
+        "Chat para que interactues con una persona que te escuche y te de consejos",
     },
     {
       href: "/hub/recetas-ai",
@@ -100,6 +108,7 @@ const SubjectCards = () => {
               key={index}
               href={subject.href}
               title={subject.title}
+              description={subject.description}
             />
           )
       )}
