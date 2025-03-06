@@ -16,14 +16,18 @@ export default function Page() {
   };
 
   return (
-    <main className="flex flex-col min-h-screen bg-background w-full md:mx-auto pt-[10em] relative px-4">
-      page
+    <main
+      className="
+    flex flex-col min-h-screen bg-background
+     w-full md:mx-auto pt-[10em] relative px-2 md:px-4"
+    >
       <div
-        className="flex flex-col items-center justify-center w-[600px] min-h-[40vh] mx-auto py-10
-      border border-gray-400 rounded-md
-      bg-white"
+        className="
+          flex flex-col items-center justify-center
+         w-[100%] md:w-[600px] min-h-[40vh] mx-auto pb-10
+         border border-gray-200 rounded-md bg-white"
       >
-        <h1>My English</h1>
+        <h1 className="text-xl font-bold pt-4">My English</h1>
         <div className="pb-2 pt-10 px-10">
           {textresponse.response && (
             <MarkDownComponent response={textresponse.response} />
@@ -43,7 +47,10 @@ export default function Page() {
             }
           }}
         />
-        <button className="bg-blue-500 text-white rounded-md p-2  w-[90%]">
+        <button
+          className="bg-blue-500 text-white rounded-md p-2  w-[90%]"
+          onClick={() => handleSend()}
+        >
           Submit
         </button>
       </div>

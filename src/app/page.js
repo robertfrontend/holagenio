@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import Principal from "./comunity-services/components/Principal";
 
 export default function Home() {
   return (
@@ -32,14 +31,6 @@ export default function Home() {
               <strong>Estudiantes:</strong> Matemáticas, lengua, historia,
               inglés, etc.
             </p>
-            {/* <p>
-              <strong>Trabajadores:</strong> Redacción de correos, informes,
-              etc.
-            </p> */}
-            {/* <p>
-              <strong>Emprendedores:</strong> Ayuda en planes de negocio,
-              marketing, redes sociales.
-            </p> */}
           </div>
           <div className="text-center flex justify-center items-center">
             <Link href={"/central"}>

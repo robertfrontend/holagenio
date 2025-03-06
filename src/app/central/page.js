@@ -1,6 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Calculator, Languages, Sailboat, BookA } from "lucide-react";
+import {
+  Calculator,
+  Languages,
+  Sailboat,
+  BookA,
+  ChevronRight,
+} from "lucide-react";
 import AuthForm, { checkAuthStatus } from "@/components/AuthForm";
 import ChatWindow from "@/components/chat/ChatWindow";
 import Link from "next/link";
@@ -46,37 +52,38 @@ const subjects = [
 
 const SubjectCards = () => {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col bg-white border">
       <Link href="/central/chat">
         <div
-          className="bg-[#ff47562f] text-[#ff4756] shadow-md rounded-lg p-6 cursor-pointer hover:shadow-lg transition
+          className="border-b rounded-lg p-4 cursor-pointer 
         flex flex-row items-center justify-center"
         >
-          {/* <Calculator size={30} /> */}
-          <h2 className="text-2xl font-normal ">Start Chat</h2>
+          <h2 className="text-xl font-normal text-blue-600 ">Chat Estudiar</h2>
+          <ChevronRight className="pl-2 text-blue-600" size={30} />
         </div>
       </Link>
-      {/* <div
-        className="bg-[#ff47562f] text-[#ff4756] shadow-md rounded-lg p-6 cursor-pointer hover:shadow-lg transition
+      <Link href="/english">
+        <div
+          className="border-b rounded-lg p-4 cursor-pointer
         flex flex-row items-center justify-center"
-      >
-        <BookA size={30} />
-        <h2 className="text-2xl font-normal ">Lengua</h2>
-      </div>
-      <div
-        className="bg-[#ff47562f] text-[#ff4756] shadow-md rounded-lg p-6 cursor-pointer hover:shadow-lg transition
+        >
+          <h2 className="text-xl font-normal text-blue-600 ">
+            Chat para inglés
+          </h2>
+          <ChevronRight className="pl-2 text-blue-600" size={30} />
+        </div>
+      </Link>
+      <Link href="/recetas-ai">
+        <div
+          className="border-b rounded-lg p-4 cursor-pointer
         flex flex-row items-center justify-center"
-      >
-        <Sailboat size={30} />
-        <h2 className="text-2xl font-normal ">Historia</h2>
-      </div>
-      <div
-        className="bg-[#ff47562f] text-[#ff4756] shadow-md rounded-lg p-6 cursor-pointer hover:shadow-lg transition
-        flex flex-row items-center justify-center"
-      >
-        <Languages size={30} />
-        <h2 className="text-2xl font-normal ">Inglés</h2>
-      </div> */}
+        >
+          <h2 className="text-xl font-normal text-blue-600">
+            Recetas de comida para hombres
+          </h2>
+          <ChevronRight className="pl-2 text-blue-600" size={30} />
+        </div>
+      </Link>
     </div>
   );
 };
