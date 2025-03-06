@@ -43,21 +43,41 @@ export default function Page() {
 }
 const SubjectCard = ({ href, title, disabled }) => (
   <Link href={href}>
-    <div
-      className="border-b rounded-lg p-4 cursor-pointer 
-      flex flex-row items-center justify-center"
-    >
-      <h2 className="text-lg md:text-xl font-normal text-blue-600">{title}</h2>
-      <ChevronRight className="pl-2 text-blue-600" size={30} />
+    <div className="border-b p-2 px-4 cursor-pointer grid grid-cols-2 items-center">
+      <div>
+        <h2 className="text-lg md:text-xl font-normal text-gray-800">
+          {title}
+        </h2>
+      </div>
+      <div className="ml-auto">
+        <ChevronRight className="pl-2 text-blue-600" size={30} />
+      </div>
     </div>
   </Link>
 );
 
 const SubjectCards = () => {
   const subjects = [
-    { href: "/central/chat", title: "Chat Estudiar" },
-    { href: "/hub/english", title: "Chat para inglés" },
-    { href: "/hub/recetas-ai", title: "Recetas de comida para hombres" },
+    {
+      href: "/central",
+      title: "Chat General",
+      description: "Chat generar donde puedes usar la AI libremente",
+    },
+    {
+      href: "/central/chat",
+      title: "Chat Estudiar",
+      description: "Chat especificamente para estudiar",
+    },
+    {
+      href: "/hub/english",
+      title: "Chat para inglés",
+      description: "Chat especificamente para ingles",
+    },
+    {
+      href: "/hub/recetas-ai",
+      title: "Recetas de comida ",
+      description: "Chat especificamente para recetas",
+    },
     {
       href: "/hub/recetas-ai",
       title: "Traducción de documentos",
