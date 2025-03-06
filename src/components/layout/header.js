@@ -50,7 +50,7 @@ const Header = () => {
       </div>
       <div className="navbar-center">
         <Link className="btn btn-ghost text-xl" href="/">
-          Dom Aprende
+          My AI
         </Link>
       </div>
       <div className="navbar-end">

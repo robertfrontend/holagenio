@@ -41,49 +41,43 @@ export default function Page() {
     </main>
   );
 }
-
-const subjects = [
-  { name: "Matemáticas", path: "/matematicas" },
-  { name: "Lengua", path: "/lengua" },
-  { name: "Historia", path: "/historia" },
-  { name: "Inglés", path: "/ingles" },
-  // Agrega más materias según necesites
-];
+const SubjectCard = ({ href, title, disabled }) => (
+  <Link href={href}>
+    <div
+      className="border-b rounded-lg p-4 cursor-pointer 
+      flex flex-row items-center justify-center"
+    >
+      <h2 className="text-xl font-normal text-blue-600">{title}</h2>
+      <ChevronRight className="pl-2 text-blue-600" size={30} />
+    </div>
+  </Link>
+);
 
 const SubjectCards = () => {
+  const subjects = [
+    { href: "/central/chat", title: "Chat Estudiar" },
+    { href: "/hub/english", title: "Chat para inglés" },
+    { href: "/hub/recetas-ai", title: "Recetas de comida para hombres" },
+    {
+      href: "/hub/recetas-ai",
+      title: "Traducción de documentos",
+      disabled: true,
+    },
+    { href: "/hub/recetas-ai", title: "Resumir documentos", disabled: true },
+  ];
+
   return (
     <div className="flex flex-col bg-white border">
-      <Link href="/central/chat">
-        <div
-          className="border-b rounded-lg p-4 cursor-pointer 
-        flex flex-row items-center justify-center"
-        >
-          <h2 className="text-xl font-normal text-blue-600 ">Chat Estudiar</h2>
-          <ChevronRight className="pl-2 text-blue-600" size={30} />
-        </div>
-      </Link>
-      <Link href="/english">
-        <div
-          className="border-b rounded-lg p-4 cursor-pointer
-        flex flex-row items-center justify-center"
-        >
-          <h2 className="text-xl font-normal text-blue-600 ">
-            Chat para inglés
-          </h2>
-          <ChevronRight className="pl-2 text-blue-600" size={30} />
-        </div>
-      </Link>
-      <Link href="/recetas-ai">
-        <div
-          className="border-b rounded-lg p-4 cursor-pointer
-        flex flex-row items-center justify-center"
-        >
-          <h2 className="text-xl font-normal text-blue-600">
-            Recetas de comida para hombres
-          </h2>
-          <ChevronRight className="pl-2 text-blue-600" size={30} />
-        </div>
-      </Link>
+      {subjects.map(
+        (subject, index) =>
+          !subject.disabled && (
+            <SubjectCard
+              key={index}
+              href={subject.href}
+              title={subject.title}
+            />
+          )
+      )}
     </div>
   );
 };
