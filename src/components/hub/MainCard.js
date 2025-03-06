@@ -5,10 +5,7 @@ const MainCard = ({ children, title, description }) => {
   return (
     <div className="flex flex-col items-center justify-center w-[100%] md:w-[600px] min-h-[40vh] mx-auto pb-10 border border-gray-200 rounded-md bg-white shadow-lg px-2 md:p-6">
       <div className="w-full pt-4 px-2">
-        <Link
-          href={"/central"}
-          className="flex underline  items-center text-gray-600"
-        >
+        <Link href={"/"} className="flex underline  items-center text-gray-600">
           <ArrowLeft size={18} /> Volver atrás
         </Link>
       </div>

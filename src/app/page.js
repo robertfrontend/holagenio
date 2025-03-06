@@ -6,14 +6,15 @@ import { ChevronRight, ChefHat } from "lucide-react";
 
 export default function Home() {
   return (
-    <main className="flex flex-col min-h-screen bg-background w-full md:mx-auto pb-[10em] pt-[6em] md:pt-[10em] relative px-2 md:px-4">
+    <main className="flex flex-col min-h-screen bg-background w-full md:mx-auto pb-[10em] pt-[3em] md:pt-[10em] relative px-2 md:px-4">
       <section className="relative w-full pt-10 flex flex-col items-center justify-center overflow-hidden">
         <div className="text-center px-4 max-w-2xl">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             AI Para todo el mundo
           </h1>
           <p className="text-md md:text-xl text-gray-600 mb-8">
-            Herramientas AI funcionales para todo el mundo. Sin complicaciones.
+            Herramientas de Inteligencia Artificial simples, rápidas y
+            asequibles para el día a día
           </p>
           <div className="w-full">
             <SubjectCards />
@@ -40,7 +41,7 @@ const SubjectCard = ({ href, title, description, disabled }) => (
         <h2 className="text-lg md:text-xl font-normal text-gray-800">
           {title}
         </h2>
-        <p className="text-gray-500 text-[14px] pr-10">{description}</p>
+        <p className="text-gray-500 text-[14px] pr-5">{description}</p>
       </div>
       <div className="ml-auto">
         <ChevronRight className="pl-2 text-gray-600" size={30} />
@@ -51,31 +52,31 @@ const SubjectCard = ({ href, title, description, disabled }) => (
 
 const SubjectCards = () => {
   const subjects = [
-    // {
-    //   href: "/central",
-    //   title: "Chat General",
-    //   description: "Chat generar donde puedes usar la AI libremente",
-    // },
+    {
+      href: "/",
+      title: "🔨 Chat Personalizado",
+      description: "Crea y adapta tu chat con IA a tus necesidades.",
+    },
     {
       href: "/central/chat",
-      title: "📚Chat para Estudiar",
-      description: "Chat especificamente para estudiar",
+      title: "📚 Chat para Estudiar",
+      description:
+        "Comparte conocimientos y resuelve dudas en un chat estudiantil.",
     },
-
     {
       href: "/hub/english",
       title: "🇺🇸 Chat para inglés",
-      description: "Chat especificamente para ingles",
+      description: "Practica y mejora tu inglés de forma interactiva.",
     },
     {
       href: "/hub/recetas-ai",
-      title: "👨‍🍳Recetas de comida ",
-      description: "Chat especificamente para recetas",
+      title: "👨‍🍳 Recetas de comida",
+      description: "Recetas rápidas y prácticas para cocinar fácil y sabroso.",
       icon: <ChefHat />,
     },
     {
-      href: "/central",
-      title: "🧍‍♂️Mi mejor amigo (muy pronto...)",
+      href: "/",
+      title: "🧍‍♂️ Mi mejor amigo (muy pronto...)",
       description:
         "Chat para que interactues con una persona que te escuche y te de consejos",
     },
