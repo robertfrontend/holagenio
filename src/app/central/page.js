@@ -1,13 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import {
-  Calculator,
-  Languages,
-  Sailboat,
-  BookA,
-  ChevronRight,
-  ChefHat,
-} from "lucide-react";
+import { ChevronRight, ChefHat } from "lucide-react";
 import AuthForm, { checkAuthStatus } from "@/components/AuthForm";
 import ChatWindow from "@/components/chat/ChatWindow";
 import Link from "next/link";
