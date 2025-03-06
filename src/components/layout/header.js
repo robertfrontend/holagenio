@@ -19,7 +19,7 @@ const Header = () => {
   };
 
   return (
-    <div className="navbar bg-base-100 z-50 fixed">
+    <div className="navbar bg-base-100 z-50 fixed border-b">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">

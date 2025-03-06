@@ -6,9 +6,9 @@ import { ChevronRight, ChefHat } from "lucide-react";
 
 export default function Home() {
   return (
-    <main className="flex flex-col min-h-screen bg-background w-full md:mx-auto pb-[10em] pt-[3em] md:pt-[10em] relative px-2 md:px-4">
+    <main className="flex flex-col min-h-screen bg-background w-full md:mx-auto pb-[8em] pt-[3em] md:pt-[10em] relative px-2 md:px-4">
       <section className="relative w-full pt-10 flex flex-col items-center justify-center overflow-hidden">
-        <div className="text-center px-4 max-w-2xl">
+        <div className="text-center px-2 md:px-4 max-w-2xl">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             AI Para todo el mundo
           </h1>
