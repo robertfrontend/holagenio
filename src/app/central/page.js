@@ -69,17 +69,17 @@ const SubjectCards = () => {
     // },
     {
       href: "/central/chat",
-      title: "Chat Estudiar",
+      title: "📚Chat Estudiar",
       description: "Chat especificamente para estudiar",
     },
     {
       href: "/hub/english",
-      title: "Chat para inglés",
+      title: "🇺🇸 Chat para inglés",
       description: "Chat especificamente para ingles",
     },
     {
       href: "/hub/recetas-ai",
-      title: "Recetas de comida ",
+      title: "👨‍🍳Recetas de comida ",
       description: "Chat especificamente para recetas",
       icon: <ChefHat />,
     },
