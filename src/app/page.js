@@ -9,16 +9,22 @@ export default function Home() {
     <main className="flex flex-col min-h-screen bg-background w-full md:mx-auto pb-[8em] pt-[3em] md:pt-[10em] relative px-2 md:px-4">
       <section className="relative w-full pt-10 flex flex-col items-center justify-center overflow-hidden">
         <div className="text-center px-2 md:px-4 max-w-2xl">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            AI Para todo el mundo
+          <div className="text-center flex justify-center items-center">
+            <img src="./logo-holagenio.png" className="w-[300px]" />
+          </div>
+          <h1 className="text-3xl md:text-5xl mt-0 font-bold mb-4 text-gray-700">
+            AI Sin Complicaciones Úsala en tu Día a Día
           </h1>
-          <p className="text-md md:text-xl text-gray-600 mb-8">
+          <p className="text-md md:text-xl text-gray-700 font-light ">
             Herramientas de Inteligencia Artificial simples, rápidas y
-            asequibles para el día a día
+            asequibles para el día a día.
           </p>
           <div className="w-full">
             <SubjectCards />
           </div>
+          <p className="text-[14px] text-blue-500">
+            Utilizamos lo ultimo de AI para nuestro modelos
+          </p>
           {/* <div className="text-center flex justify-center items-center">
             <Link href={"/central"}>
               <button className="px-6 py-3 bg-blue-50 text-blue-600 font-semibold rounded-md flex items-center justify-center space-x-2">

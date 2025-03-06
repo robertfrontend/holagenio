@@ -49,8 +49,12 @@ const Header = () => {
         </div>
       </div>
       <div className="navbar-center">
-        <Link className="btn btn-ghost text-xl" href="/">
-          My AI
+        <Link className="text-xl" href="/">
+          {/* <img src="./logo-holagenio.png" className="w-[150px]" /> */}
+          <img
+            src="https://i.postimg.cc/9ftHvYPK/logo-holagenio.png"
+            className="w-[150px]"
+          />
         </Link>
       </div>
       <div className="navbar-end">

@@ -9,6 +9,13 @@ import { Analytics } from "@vercel/analytics/react";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hola Genio</title>
+        <meta name="description" content="This is the description of my app." />
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body>
         <Analytics />
         <Header />
@@ -25,7 +32,7 @@ export default function RootLayout({ children }) {
         </div>
         <div className="text-center py-8">
           <span className="text-sm text-gray-500 sm:text-center">
-            © 2025 Mi AI.
+            © 2025 HolaGenio.com
             <br />
             All Rights Reserved. Created with ❤️ by{" "}
             <a href="https://www.linkedin.com/in/robertfrontend">
