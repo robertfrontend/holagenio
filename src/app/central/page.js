@@ -6,6 +6,7 @@ import {
   Sailboat,
   BookA,
   ChevronRight,
+  ChefHat,
 } from "lucide-react";
 import AuthForm, { checkAuthStatus } from "@/components/AuthForm";
 import ChatWindow from "@/components/chat/ChatWindow";
@@ -22,11 +23,11 @@ export default function Page() {
     return () => unsubscribe();
   }, []);
   return (
-    <main className="flex flex-col min-h-screen bg-background w-full md:mx-auto pt-[10em] relative px-4">
+    <main className="flex flex-col min-h-screen bg-background w-full md:mx-auto pt-[6em] md:pt-[10em] relative px-4">
       <header className="relative w-full flex flex-col items-center justify-center mb-10">
         <div className="text-center px-4 max-w-2xl">
-          <h1 className="text-2xl md:text-3xl font-semibold mb-2">
-            ¿Qué te gustaría aprender hoy?
+          <h1 className="text-3xl md:text-4xl font-semibold mb-2">
+            Que te gustaría hacer hoy?
           </h1>
           <p className="text-lg md:text-xl">
             Selecciona una de las opciones a continuación para recibir ayuda con
@@ -42,15 +43,18 @@ export default function Page() {
   );
 }
 const SubjectCard = ({ href, title, disabled }) => (
-  <Link href={href}>
-    <div className="border-b p-2 px-4 cursor-pointer grid grid-cols-2 items-center">
+  <Link
+    href={href}
+    className="w-full block my-4 md:my-6 border bg-gray-50 border-gray-300 p-4 px-4 cursor-pointer rounded-xl"
+  >
+    <div className="grid grid-cols-2 items-center">
       <div>
         <h2 className="text-lg md:text-xl font-normal text-gray-800">
           {title}
         </h2>
       </div>
       <div className="ml-auto">
-        <ChevronRight className="pl-2 text-blue-600" size={30} />
+        <ChevronRight className="pl-2 text-gray-600" size={30} />
       </div>
     </div>
   </Link>
@@ -58,11 +62,11 @@ const SubjectCard = ({ href, title, disabled }) => (
 
 const SubjectCards = () => {
   const subjects = [
-    {
-      href: "/central",
-      title: "Chat General",
-      description: "Chat generar donde puedes usar la AI libremente",
-    },
+    // {
+    //   href: "/central",
+    //   title: "Chat General",
+    //   description: "Chat generar donde puedes usar la AI libremente",
+    // },
     {
       href: "/central/chat",
       title: "Chat Estudiar",
@@ -77,6 +81,7 @@ const SubjectCards = () => {
       href: "/hub/recetas-ai",
       title: "Recetas de comida ",
       description: "Chat especificamente para recetas",
+      icon: <ChefHat />,
     },
     {
       href: "/hub/recetas-ai",
@@ -87,7 +92,7 @@ const SubjectCards = () => {
   ];
 
   return (
-    <div className="flex flex-col bg-white border">
+    <div className="">
       {subjects.map(
         (subject, index) =>
           !subject.disabled && (
