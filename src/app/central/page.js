@@ -47,7 +47,7 @@ const SubjectCard = ({ href, title, disabled }) => (
     href={href}
     className="w-full block my-4 md:my-6 border bg-gray-50 border-gray-300 p-4 px-4 cursor-pointer rounded-xl"
   >
-    <div className="grid grid-cols-2 items-center">
+    <div className="flex items-center">
       <div>
         <h2 className="text-lg md:text-xl font-normal text-gray-800">
           {title}
