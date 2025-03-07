@@ -1,8 +1,9 @@
 import getChatAI from "@/api/openai";
 import { Send } from "lucide-react";
 import React, { useEffect, useState, useRef } from "react";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
-import { auth, getUserData } from "@/firebase/firebaseConfig";
+
+import useRateLimiter from "@/app/hooks/userRateLimiter";
+import ModalSuscription from "@/components/hub/ModalSuscription";
 
 import UIResponse from "./UIResponse";
 
@@ -17,6 +18,13 @@ const ChatWindow = () => {
 
   const loaderRef = useRef(null);
 
+  const limit = 5; // Límite de peticiones
+  const windowTime = 60 * 60 * 1000; // Ventana de tiempo en milisegundos (1 hora)
+  const { requestCount, isLimited, incrementRequestCount } = useRateLimiter(
+    limit,
+    windowTime
+  );
+
   useEffect(() => {}, []);
 
   useEffect(() => {
@@ -28,6 +36,12 @@ const ChatWindow = () => {
   }, []);
 
   const handleChatAI = async (handletext, isResume) => {
+    if (isLimited) {
+      // alert("Límite de peticiones excedido. Inténtalo más tarde.");
+      document.getElementById("modalGetpremium").showModal();
+      return;
+    }
+
     setNumberSection((prev) => prev + 1);
     setFirstTime(false);
     setIsLoaded(true);
@@ -112,6 +126,7 @@ const ChatWindow = () => {
         input={input}
         isLoaded={isLoaded}
       />
+      <ModalSuscription />
     </div>
   );
 };

@@ -40,7 +40,7 @@ export default function ModalSuscription() {
               </li>
             </ul>
             <div className="text-center pb-4">
-              <h3 className="text-4xl font-bold text-gray-800 ">$4</h3>
+              <h3 className="text-4xl font-bold text-gray-800 ">$8</h3>
               <p className="text-gray-400">Por usuario / Mensual</p>
             </div>
             <div className="text-center">
