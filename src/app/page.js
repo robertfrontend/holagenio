@@ -53,7 +53,7 @@ const SubjectCard = ({ href, title, description, disabled }) => (
           className={`text-lg md:text-xl font-normal 
             ${disabled ? "text-gray-400" : "text-gray-800"}  `}
         >
-          {title} {disabled && "| muy pronto..."}
+          {title} {disabled && "(muy pronto...)"}
         </h2>
         <p
           className={`${disabled ? "text-gray-400" : "text-gray-500"} text-[14px] pr-5`}
@@ -92,15 +92,39 @@ const SubjectCards = () => {
     },
     {
       href: "/",
+      title: "🤸‍♂️ Generador de ejercicios rápidos de fitness en casa.",
+      // description: "Practica y mejora tu inglés de forma interactiva.",
+      disabled: true,
+    },
+    {
+      href: "/",
+      title: "💡 Generador de ideas para negocios o emprendimientos personales",
+      // description: "Practica y mejora tu inglés de forma interactiva.",
+      disabled: true,
+    },
+    {
+      href: "/",
+      title: "📸 Generador de descripciones de posts",
+      // description: "Practica y mejora tu inglés de forma interactiva.",
+      disabled: true,
+    },
+    {
+      href: "/",
+      title: "Afirmaciones, frases",
+      // description: "Practica y mejora tu inglés de forma interactiva.",
+      disabled: true,
+    },
+    {
+      href: "/",
       title: "🔨 Chat Personalizado",
-      description: "Crea y adapta tu chat con IA a tus necesidades.",
+      // description: "Crea y adapta tu chat con IA a tus necesidades.",
       disabled: true,
     },
     {
       href: "/",
       title: "🧍‍♂️ Mi mejor amigo",
-      description:
-        "Chat para que interactues con una persona que te escuche y te de consejos",
+      // description:
+      //   "Chat para que interactues con una persona que te escuche y te de consejos",
       disabled: true,
     },
     {
