@@ -23,7 +23,6 @@ export default function Page() {
       alert("Límite de peticiones excedido. Inténtalo más tarde.");
       return;
     }
-
     incrementRequestCount();
 
     setResponseAPI("");

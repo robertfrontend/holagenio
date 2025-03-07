@@ -4,14 +4,27 @@ import GetEnglishAPI from "./api/index";
 import Markdown from "markdown-to-jsx";
 import MainCard from "@/components/hub/MainCard";
 import { Send } from "lucide-react";
+import useRateLimiter from "@/app/hooks/userRateLimiter";
 
 export default function Page() {
   const [input, setInput] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
   const [textresponse, setTextResponse] = useState("");
 
+  const limit = 5; // Límite de peticiones
+  const windowTime = 60 * 60 * 1000; // Ventana de tiempo en milisegundos (1 hora)
+  const { requestCount, isLimited, incrementRequestCount } = useRateLimiter(
+    limit,
+    windowTime
+  );
+
   const handleSend = async (value) => {
-    console.log("Hola Worldddd");
+    if (isLimited) {
+      alert("Límite de peticiones excedido. Inténtalo más tarde.");
+      return;
+    }
+    incrementRequestCount();
+
     setIsLoaded(true);
     const response = await GetEnglishAPI(value);
     setTextResponse(response);

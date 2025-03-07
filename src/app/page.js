@@ -24,7 +24,7 @@ export default function Home() {
             Herramientas de Inteligencia Artificial simples, rápidas y
             asequibles para el día a día.
           </p>
-          <div className="w-full pt-10">
+          <div className="w-full pt-4 md:pt-10">
             <SubjectCards />
           </div>
           <p className="text-[14px] text-blue-500">
@@ -45,17 +45,27 @@ export default function Home() {
 const SubjectCard = ({ href, title, description, disabled }) => (
   <Link
     href={href || "/"}
-    className="w-full block my-4 md:my-6 border bg-white border-gray-300 p-4 px-4 cursor-pointer rounded-xl"
+    className={`w-full block my-4 md:my-6 border bg-white border-gray-300 p-4 px-4 ${!disabled ? "cursor-pointer" : "cursor-auto"} rounded-xl`}
   >
     <div className="flex items-center">
       <div className="text-left">
-        <h2 className="text-lg md:text-xl font-normal text-gray-800">
-          {title}
+        <h2
+          className={`text-lg md:text-xl font-normal 
+            ${disabled ? "text-gray-400" : "text-gray-800"}  `}
+        >
+          {title} {disabled && "| muy pronto..."}
         </h2>
-        <p className="text-gray-500 text-[14px] pr-5">{description}</p>
+        <p
+          className={`${disabled ? "text-gray-400" : "text-gray-500"} text-[14px] pr-5`}
+        >
+          {description}
+        </p>
       </div>
       <div className="ml-auto">
-        <ChevronRight className="pl-2 text-gray-600" size={30} />
+        <ChevronRight
+          className={`pl-2  ${disabled ? "text-gray-400" : "text-gray-800"}`}
+          size={30}
+        />
       </div>
     </div>
   </Link>
@@ -64,15 +74,16 @@ const SubjectCard = ({ href, title, description, disabled }) => (
 const SubjectCards = () => {
   const subjects = [
     {
-      href: "/",
-      title: "🔨 Chat Personalizado",
-      description: "Crea y adapta tu chat con IA a tus necesidades.",
-    },
-    {
       href: "/central/chat",
       title: "📚 Chat para Estudiar",
       description:
         "Comparte conocimientos y resuelve dudas en un chat estudiantil.",
+    },
+    {
+      href: "/hub/recetas-ai",
+      title: "👨‍🍳 Recetas de comida",
+      description: "Recetas rápidas y prácticas para cocinar fácil y sabroso.",
+      // icon: <ChefHat />,
     },
     {
       href: "/hub/english",
@@ -80,38 +91,37 @@ const SubjectCards = () => {
       description: "Practica y mejora tu inglés de forma interactiva.",
     },
     {
-      href: "/hub/recetas-ai",
-      title: "👨‍🍳 Recetas de comida",
-      description: "Recetas rápidas y prácticas para cocinar fácil y sabroso.",
-      icon: <ChefHat />,
+      href: "/",
+      title: "🔨 Chat Personalizado",
+      description: "Crea y adapta tu chat con IA a tus necesidades.",
+      disabled: true,
     },
     {
       href: "/",
-      title: "🧍‍♂️ Mi mejor amigo (muy pronto...)",
+      title: "🧍‍♂️ Mi mejor amigo",
       description:
         "Chat para que interactues con una persona que te escuche y te de consejos",
+      disabled: true,
     },
     {
-      href: "/hub/recetas-ai",
+      href: "/",
       title: "Traducción de documentos",
       disabled: true,
     },
-    { href: "/hub/recetas-ai", title: "Resumir documentos", disabled: true },
+    { href: "/", title: "Resumir documentos", disabled: true },
   ];
 
   return (
     <div className="">
-      {subjects.map(
-        (subject, index) =>
-          !subject.disabled && (
-            <SubjectCard
-              key={index}
-              href={subject.href}
-              title={subject.title}
-              description={subject.description}
-            />
-          )
-      )}
+      {subjects.map((subject, index) => (
+        <SubjectCard
+          key={index}
+          href={subject.href}
+          title={subject.title}
+          description={subject.description}
+          disabled={subject.disabled}
+        />
+      ))}
     </div>
   );
 };
