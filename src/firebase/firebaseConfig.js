@@ -11,13 +11,13 @@ import { getDatabase } from "firebase/database";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCGyJZdj908LD3of8cQbW8kwRfaBfumrsg",
-  authDomain: "bizcategories.firebaseapp.com",
-  projectId: "bizcategories",
-  storageBucket: "bizcategories.appspot.com",
-  messagingSenderId: "134491327409",
-  appId: "1:134491327409:web:3f1a7ac54b919db16f4b90",
-  measurementId: "G-NGVWBC2BNR",
+  apiKey: "AIzaSyBEEzQ__uAZy-9UgdNyp9v6owUIaP6SKKY",
+  authDomain: "holagenio-69e33.firebaseapp.com",
+  projectId: "holagenio-69e33",
+  storageBucket: "holagenio-69e33.firebasestorage.app",
+  messagingSenderId: "689478462045",
+  appId: "1:689478462045:web:ba94ae51bd1acd29a73bb4",
+  measurementId: "G-EC7EVQW3LK",
 };
 
 // Initialize Firebase
@@ -39,28 +39,6 @@ export async function uploadFile(file, name) {
     console.log(error, "error upload file");
   }
 }
-
-export const getUserData = async () => {
-  const user = auth.currentUser;
-  console.log(auth, "auth");
-  if (user) {
-    const uid = user.uid;
-
-    try {
-      const userDoc = await db.collection("users").doc(uid).get();
-      if (userDoc.exists) {
-        console.log("User Data:", userDoc.data());
-        return userDoc.data();
-      } else {
-        console.log("No such document!");
-      }
-    } catch (error) {
-      console.error("Error getting document:", error);
-    }
-  } else {
-    console.log("No user is signed in.");
-  }
-};
 
 export const auth = getAuth(app);
 

@@ -4,6 +4,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { ArrowRight } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { UserAuth } from "@/app/context/AuthContext";
 
 // Función para verificar el estado de autenticación
 export const checkAuthStatus = (callback) => {
@@ -16,20 +17,30 @@ export const checkAuthStatus = (callback) => {
 };
 
 export default function AuthForm() {
-  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, loading, error] = useSignInWithGoogle(auth);
+
+  const { user, logOut } = UserAuth();
 
   const handleGoogleSignIn = () => {
     signInWithGoogle();
   };
+
+  useEffect(() => {
+    console.log(user, "user loging");
+
+    if (user) {
+      window.location.href = "/profile";
+    }
+  }, [user]);
 
   if (loading) {
     return <div>Loading...</div>;
   }
   if (user) {
     return (
-      <div className="text-center p-6 rounded-md shadow-md">
+      <div className="text-center p-6 rounded-md shadow-md bg-white mx-4">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">
-          ¡Bienvenido, {user.user.displayName}!
+          ¡Bienvenido, {user.displayName}!
         </h2>
         <p className="text-lg text-gray-800 mb-6">
           Ya has iniciado sesión y estás listo para comenzar.
@@ -37,7 +48,7 @@ export default function AuthForm() {
         <div className="text-center flex justify-center items-center">
           <button
             onClick={() => (window.location.href = "/chat")}
-            className="px-6 py-3 bg-[#ff47562f] text-[#ff4756] font-semibold rounded-md flex items-center justify-center space-x-2"
+            className="px-6 py-3  bg-blue-600 text-white font-semibold rounded-md flex items-center justify-center space-x-2"
           >
             Ir a la página principal <ArrowRight size={20} />
           </button>
@@ -57,19 +68,18 @@ export default function AuthForm() {
         items-center 
         justify-center 
         overflow-hidden
+        px-4 
       "
       // Opcional: puedes utilizar un background con un patrón de cuadrícula
       // usando una imagen o un gradient especial
       style={{
         backgroundImage:
           "url(https://i.postimg.cc/tJVbSv8D/0a352d89-c2a0-478a-9131-7823fadb4681.jpg)",
-        backgroundRepeat: "no-repeat",
         backgroundSize: "100%",
       }}
     >
-      <div className="text-center p-6 rounded-xl shadow-md w-[600px] min-h-[40vh] justify-center items-center flex flex-col bg-white">
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">Dom Aprende</h2>
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">
+      <div className="text-center p-6 rounded-xl shadow-md w-[100%]  md:w-[600px] min-h-[40vh] justify-center items-center flex flex-col bg-white">
+        <h2 className="text-xl font-bold text-gray-800 mb-4">
           Inicio de sesión/Registro requerido
         </h2>
         <button
@@ -89,9 +99,6 @@ export default function AuthForm() {
           </svg>
           Iniciar sesión con Google
         </button>
-        <p className="text-sm text-gray-800 mt-4">
-          Inicia sesión o crea una cuenta para comenzar a publicar.
-        </p>
       </div>
     </section>
   );

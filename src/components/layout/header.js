@@ -4,9 +4,16 @@ import { getAuth, signOut } from "firebase/auth";
 import { useRouter } from "next/navigation"; // Change this import
 import Link from "next/link";
 import Image from "next/image";
+import { UserAuth } from "@/app/context/AuthContext";
+import { useEffect } from "react";
 
 const Header = () => {
+  const { user, logOut } = UserAuth();
   const router = useRouter();
+
+  useEffect(() => {
+    console.log(user, "user loging HEADERRRR");
+  }, [user]);
 
   const handleLogout = async () => {
     const auth = getAuth();
@@ -68,18 +75,27 @@ const Header = () => {
             z-[1] mt-3 w-52 p-2 shadow"
           >
             <li className="py-2">
-              <Link href={"/profile"} className="text-xl">
-                <CircleUser />
-                Profile
-              </Link>
+              {user ? (
+                <Link href={"/profile"} className="text-xl">
+                  <CircleUser />
+                  Profile
+                </Link>
+              ) : (
+                <Link href={"/auth"} className="text-xl">
+                  {" "}
+                  Login
+                </Link>
+              )}
             </li>
             {/* <li><a>Settings</a></li> */}
-            <li className="justify-between">
-              <a className="text-xl text-red-500" onClick={handleLogout}>
-                <LogOut />
-                Logout
-              </a>
-            </li>
+            {user && (
+              <li className="justify-between">
+                <a className="text-xl text-red-500" onClick={handleLogout}>
+                  <LogOut />
+                  Logout
+                </a>
+              </li>
+            )}
           </ul>
         </div>
       </div>

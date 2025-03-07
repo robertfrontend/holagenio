@@ -36,29 +36,31 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <Analytics />
-        <Header />
-        <div
-          className="relative full"
-          style={{
-            backgroundImage:
-              "url(https://i.postimg.cc/tJVbSv8D/0a352d89-c2a0-478a-9131-7823fadb4681.jpg)",
-            backgroundRepeat: "repeat",
-            backgroundSize: "100%",
-          }}
-        >
-          {children}
-        </div>
-        <div className="text-center py-8">
-          <span className="text-sm text-gray-500 sm:text-center">
-            © 2025 HolaGenio.com
-            <br />
-            All Rights Reserved. Created with ❤️ by{" "}
-            <a href="https://www.linkedin.com/in/robertfrontend">
-              RobertFrontend
-            </a>
-            .
-          </span>
-        </div>
+        <AuthContextProvider>
+          <Header />
+          <div
+            className="relative full"
+            style={{
+              backgroundImage:
+                "url(https://i.postimg.cc/tJVbSv8D/0a352d89-c2a0-478a-9131-7823fadb4681.jpg)",
+              backgroundRepeat: "repeat",
+              backgroundSize: "100%",
+            }}
+          >
+            {children}
+          </div>
+          <div className="text-center py-8">
+            <span className="text-sm text-gray-500 sm:text-center">
+              © 2025 HolaGenio.com
+              <br />
+              All Rights Reserved. Created with ❤️ by{" "}
+              <a href="https://www.linkedin.com/in/robertfrontend">
+                RobertFrontend
+              </a>
+              .
+            </span>
+          </div>
+        </AuthContextProvider>
         <script async src="https://js.stripe.com/v3/buy-button.js"></script>
       </body>
     </html>

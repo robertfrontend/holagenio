@@ -1,10 +1,18 @@
 "use client";
 import Link from "next/link";
+import { useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 
 import { ChevronRight, ChefHat } from "lucide-react";
+import { UserAuth } from "./context/AuthContext";
 
 export default function Home() {
+  const { user, logOut } = UserAuth();
+
+  useEffect(() => {
+    console.log(user, "user loging");
+  }, [user]);
+
   return (
     <main className="flex flex-col min-h-screen bg-background w-full md:mx-auto pb-[8em] pt-[6em] md:pt-[10em] relative px-2 md:px-4">
       <section className="relative w-full pt-10 flex flex-col items-center justify-center overflow-hidden">
@@ -24,6 +32,16 @@ export default function Home() {
             Herramientas de Inteligencia Artificial simples, rápidas y
             asequibles para el día a día.
           </p>
+
+          <div className="my-4">
+            {user && (
+              <h4 className="text-xl text-gray-700">
+                Welcome back!{" "}
+                <span className=" font-bold">{user.displayName}</span>{" "}
+              </h4>
+            )}
+          </div>
+
           <div className="w-full pt-4 md:pt-10">
             <SubjectCards />
           </div>
