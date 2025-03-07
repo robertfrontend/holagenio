@@ -13,7 +13,7 @@ export default function Page() {
   const [textresponse, setTextResponse] = useState("");
 
   const limit = 5;
-  const windowTime = 24 * 60 * 60 * 1000; // Ventana de tiempo en milisegundos (1 día)
+  const windowTime = 60 * 60 * 1000; // Ventana de tiempo en milisegundos (1 hora)
   const { requestCount, isLimited, incrementRequestCount } = useRateLimiter(
     limit,
     windowTime
