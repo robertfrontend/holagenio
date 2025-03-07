@@ -41,6 +41,7 @@ export default function RootLayout({ children }) {
             .
           </span>
         </div>
+        <script async src="https://js.stripe.com/v3/buy-button.js"></script>
       </body>
     </html>
   );
