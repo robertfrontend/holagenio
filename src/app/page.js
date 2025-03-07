@@ -30,13 +30,6 @@ export default function Home() {
           <p className="text-[14px] text-blue-500">
             Utilizamos lo ultimo de AI para nuestro modelos
           </p>
-          {/* <div className="text-center flex justify-center items-center">
-            <Link href={"/central"}>
-              <button className="px-6 py-3 bg-blue-50 text-blue-600 font-semibold rounded-md flex items-center justify-center space-x-2">
-                Únete a la lista de espera <ArrowRight size={20} />
-              </button>
-            </Link>
-          </div> */}
         </div>
       </section>
     </main>
@@ -79,6 +72,7 @@ const SubjectCards = () => {
       description:
         "Comparte conocimientos y resuelve dudas en un chat estudiantil.",
     },
+
     {
       href: "/hub/recetas-ai",
       title: "👨‍🍳 Recetas de comida",
@@ -89,6 +83,13 @@ const SubjectCards = () => {
       href: "/hub/english",
       title: "🇺🇸 Chat para inglés",
       description: "Practica y mejora tu inglés de forma interactiva.",
+    },
+    {
+      href: "/hub/recetas-ai",
+      title: "🩻 Analizar imagen",
+      description: "Entiende cualquier documento o texto que no entiendas.",
+      // icon: <ChefHat />,
+      disabled: true,
     },
     {
       href: "/",
