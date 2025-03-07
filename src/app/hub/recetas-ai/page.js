@@ -4,13 +4,28 @@ import Markdown from "markdown-to-jsx";
 import { Clock, Send, Share } from "lucide-react";
 import GetRecipe from "./api";
 import MainCard from "@/components/hub/MainCard";
+import useRateLimiter from "@/app/hooks/userRateLimiter";
 
 export default function Page() {
   const [input, setInput] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
   const [responseApi, setResponseAPI] = useState("");
 
+  const limit = 5; // Límite de peticiones
+  const windowTime = 60 * 60 * 1000; // Ventana de tiempo en milisegundos (1 hora)
+  const { requestCount, isLimited, incrementRequestCount } = useRateLimiter(
+    limit,
+    windowTime
+  );
+
   const handleSend = async (value) => {
+    if (isLimited) {
+      alert("Límite de peticiones excedido. Inténtalo más tarde.");
+      return;
+    }
+
+    incrementRequestCount();
+
     setResponseAPI("");
     setInput("");
     setIsLoaded(true);

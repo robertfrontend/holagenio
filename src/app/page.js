@@ -6,20 +6,25 @@ import { ChevronRight, ChefHat } from "lucide-react";
 
 export default function Home() {
   return (
-    <main className="flex flex-col min-h-screen bg-background w-full md:mx-auto pb-[8em] pt-[3em] md:pt-[10em] relative px-2 md:px-4">
+    <main className="flex flex-col min-h-screen bg-background w-full md:mx-auto pb-[8em] pt-[6em] md:pt-[10em] relative px-2 md:px-4">
       <section className="relative w-full pt-10 flex flex-col items-center justify-center overflow-hidden">
         <div className="text-center px-2 md:px-4 max-w-2xl">
-          <div className="text-center flex justify-center items-center">
-            <img src="./logo-holagenio.png" className="w-[300px]" />
+          <div className="text-left flex justify-center items-center">
+            <img
+              src="https://i.postimg.cc/9ftHvYPK/logo-holagenio.png"
+              className="w-[150px]"
+            />
           </div>
-          <h1 className="text-3xl md:text-5xl mt-0 font-bold mb-4 text-gray-700">
-            AI Sin Complicaciones Úsala en tu Día a Día
+          <h1 className="text-3xl md:text-4xl mt-0 font-bold mb-4 text-gray-700">
+            AI Sin Complicaciones.
+            <br />
+            Úsala en tu Día a Día
           </h1>
           <p className="text-md md:text-xl text-gray-700 font-light ">
             Herramientas de Inteligencia Artificial simples, rápidas y
             asequibles para el día a día.
           </p>
-          <div className="w-full">
+          <div className="w-full pt-10">
             <SubjectCards />
           </div>
           <p className="text-[14px] text-blue-500">

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import getEnglishChat from "./api/index";
+import GetEnglishAPI from "./api/index";
 import Markdown from "markdown-to-jsx";
 import MainCard from "@/components/hub/MainCard";
 import { Send } from "lucide-react";
@@ -11,8 +11,9 @@ export default function Page() {
   const [textresponse, setTextResponse] = useState("");
 
   const handleSend = async (value) => {
+    console.log("Hola Worldddd");
     setIsLoaded(true);
-    const response = await getEnglishChat(value);
+    const response = await GetEnglishAPI(value);
     setTextResponse(response);
 
     console.log(response.properties, "response hiii");
@@ -22,7 +23,7 @@ export default function Page() {
   return (
     <main className="flex flex-col min-h-screen bg-background w-full md:mx-auto pt-[10em] relative px-2 md:px-4">
       <MainCard
-        className="flex flex-col items-center justify-center w-[100%] md:w-[600px] min-h-[40vh] mx-auto pb-10 border border-gray-200 rounded-md bg-white"
+        className="flex flex-col items-center justify-center w-[100%] md:w-[600px] min-h-[40vh] mx-auto pb-10 border border-gray-200 rounded-md bg-white shadow-lg"
         title={"🇺🇸 Learn English"}
         description={`Traduce, aprende frases y nuevas palabras todos los días.`}
       >
@@ -30,7 +31,8 @@ export default function Page() {
         <div className="relative w-full flex flex-col justify-center items-center mt-6">
           <input
             type="text"
-            className="border border-gray-300 rounded-md p-2 mb-2 w-[90%]"
+            className="border border-gray-300 rounded-md p-2 mb-2 w-[90%] 
+            focus:outline-none focus:ring-2 focus:ring-blue-500 pr-20"
             placeholder="Ayudame con mi ingles"
             value={input}
             min={2}
@@ -44,8 +46,11 @@ export default function Page() {
           />
           {!isLoaded && (
             <button
-              className=" text-white rounded-md p-2 absolute top-0 bottom-0 right-10"
-              onClick={() => handleSend(input)}
+              className="text-white rounded-md p-2 absolute top-0 bottom-0 right-10"
+              onClick={() => {
+                console.log("Button Clicked");
+                handleSend(input);
+              }}
             >
               <Send size={20} className="text-blue-600 ml-4" />
             </button>
@@ -54,10 +59,23 @@ export default function Page() {
 
         {/* -------- Form End --------*/}
 
+        {isLoaded && (
+          <div className="text-center pb-10">
+            <div>
+              <span className="loading loading-ring w-[40px] text-blue-600"></span>
+              <p className="text-blue-400">Generando Respuesta...</p>
+            </div>
+          </div>
+        )}
+
         <div className="pb-2 pt-10 w-full px-8">
           {textresponse && (
             <>
-              <h2 className="text-xl">{textresponse.title}</h2>
+              <h2 className="text-2xl font-semibold text-gray-800">
+                {textresponse.title}
+              </h2>
+              <p className="text-gray-700">{textresponse.description}</p>
+              {/* <p className="text-gray-700">{textresponse.summary}</p> */}
               {textresponse.response && (
                 <MarkDownComponent response={textresponse.response} />
               )}

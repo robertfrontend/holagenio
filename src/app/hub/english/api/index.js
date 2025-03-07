@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getEnglishChat = async (prompt) => {
+const GetEnglishAPI = async (prompt) => {
   const apiKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY;
 
   const systemprompt = `
@@ -33,6 +33,14 @@ const getEnglishChat = async (prompt) => {
 
     - Ensure translations are accurate and concise.
     - Summaries should be brief and directly related to the meaning of the phrase or word.
+
+  # Json Schema
+   {
+      "title": "title",
+      "description": "description",
+      "summary": "summary",
+      "response": "response"
+    }
 `;
 
   const response = await axios.post(
@@ -49,7 +57,8 @@ const getEnglishChat = async (prompt) => {
       response_format: {
         type: "json_schema",
         json_schema: {
-          name: "title",
+          name: "response_schema",
+          strict: true,
           schema: {
             type: "object",
             properties: {
@@ -57,11 +66,21 @@ const getEnglishChat = async (prompt) => {
                 type: "string",
                 description: "The title of the response.",
               },
+              description: {
+                type: "string",
+                description:
+                  "A detailed description providing more information about the response.",
+              },
+              summary: {
+                type: "string",
+                description: "A brief summary of the response.",
+              },
               response: {
                 type: "string",
                 description: "The complete response formatted in markdown.",
               },
             },
+            required: ["title", "description", "summary", "response"],
             additionalProperties: false,
           },
         },
@@ -83,4 +102,4 @@ const getEnglishChat = async (prompt) => {
   return jsonResponse;
 };
 
-export default getEnglishChat;
+export default GetEnglishAPI;
