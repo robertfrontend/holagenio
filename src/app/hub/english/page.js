@@ -5,14 +5,15 @@ import Markdown from "markdown-to-jsx";
 import MainCard from "@/components/hub/MainCard";
 import { Send } from "lucide-react";
 import useRateLimiter from "@/app/hooks/userRateLimiter";
+import ModalSuscription from "@/components/hub/ModalSuscription";
 
 export default function Page() {
   const [input, setInput] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
   const [textresponse, setTextResponse] = useState("");
 
-  const limit = 5; // Límite de peticiones
-  const windowTime = 60 * 60 * 1000; // Ventana de tiempo en milisegundos (1 hora)
+  const limit = 5;
+  const windowTime = 24 * 60 * 60 * 1000; // Ventana de tiempo en milisegundos (1 día)
   const { requestCount, isLimited, incrementRequestCount } = useRateLimiter(
     limit,
     windowTime
@@ -20,7 +21,7 @@ export default function Page() {
 
   const handleSend = async (value) => {
     if (isLimited) {
-      alert("Límite de peticiones excedido. Inténtalo más tarde.");
+      document.getElementById("modalGetpremium").showModal();
       return;
     }
     incrementRequestCount();
@@ -96,6 +97,7 @@ export default function Page() {
           )}
         </div>
       </MainCard>
+      <ModalSuscription />
     </main>
   );
 }

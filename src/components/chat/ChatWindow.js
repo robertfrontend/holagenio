@@ -175,7 +175,7 @@ const Suggestions = ({ handleSugestions }) => {
   return (
     <section className="text-center py-10">
       <div>
-        <h1 className="text-3xl">Good Morning Robert!</h1>
+        <h1 className="text-3xl">Good Morning !</h1>
       </div>
       <div className="grid md:grid-cols-3 gap-4 justify-around my-4 text-md">
         <div

@@ -68,9 +68,8 @@ const SubjectCards = () => {
   const subjects = [
     {
       href: "/central/chat",
-      title: "📚 Chat para Estudiar",
-      description:
-        "Comparte conocimientos y resuelve dudas en un chat estudiantil.",
+      title: "💬 Chat libre",
+      description: "Habla libremente con la AI y aprende de lo que quieras.",
     },
 
     {
