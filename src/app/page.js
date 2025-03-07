@@ -67,7 +67,7 @@ const SubjectCard = ({ href, title, description, disabled }) => (
 const SubjectCards = () => {
   const subjects = [
     {
-      href: "/central/chat",
+      href: "/hub/chat",
       title: "💬 Chat libre",
       description: "Habla libremente con la AI y aprende de lo que quieras.",
     },
