@@ -1,6 +1,6 @@
 import getChatAI from "@/api/openai";
 import { Send } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { auth, getUserData } from "@/firebase/firebaseConfig";
 
@@ -14,6 +14,8 @@ const ChatWindow = () => {
   const [numberSection, setNumberSection] = useState(0);
 
   const [helper, setSelectHelper] = useState("");
+
+  const loaderRef = useRef(null);
 
   useEffect(() => {}, []);
 
@@ -44,11 +46,9 @@ const ChatWindow = () => {
       { sender: "ai", text: response.response, title: response.title },
     ]);
 
-    const section = document.querySelector(
-      `[section-id="${response.sectionId}"]`
-    );
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
+    // Scroll to the loader div
+    if (loaderRef.current) {
+      loaderRef.current.scrollIntoView({ behavior: "smooth" });
     }
 
     setIsLoaded(false);
@@ -77,7 +77,7 @@ const ChatWindow = () => {
   return (
     <div
       className="bg-white flex flex-col h-screen ml-auto border
-     border-gray-300 md:rounded-lg overflow-hidden pb-[10em] md:pb-10 md:px-10
+     border-gray-300 md:rounded-lg overflow-hidden pb-[2em] md:pb-10 md:px-10
      "
     >
       <header className="p-4 text-center border-b">
@@ -94,9 +94,12 @@ const ChatWindow = () => {
         ))}
         <div className="text-center pb-10">
           {isLoaded && (
-            <div>
+            <div className="min-h-[30vh]" id="loader" ref={loaderRef}>
               {" "}
-              <span className="loading loading-ring w-[60px] text-blue-600"></span>
+              <span
+                className="loading loading-ring
+               w-[60px] text-blue-600"
+              ></span>
               <p className="text-blue-400">AI is typing...</p>
             </div>
           )}
