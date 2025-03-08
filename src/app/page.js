@@ -68,7 +68,7 @@ export default function Home() {
             <div class="pb-10">
               <h1 className="text-3xl font-bold">Nuestros precios</h1>
             </div>
-            <div class="flex gap-10">
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-10">
               <FreeCard />
               <PremiumCard />
             </div>
@@ -80,7 +80,7 @@ export default function Home() {
 }
 
 const FreeCard = () => (
-  <div className="card w-96 bg-base-100 shadow-sm border">
+  <div className="card w-[80%] md:w-96 bg-base-100 shadow-sm border">
     <div className="card-body">
       {/* <span className="badge badge-xs badge-warning">Most Popular</span> */}
       <div className="flex justify-between">
@@ -129,7 +129,7 @@ const FreeCard = () => (
 );
 
 const PremiumCard = () => (
-  <div className="card w-96 bg-base-100 shadow-sm border border-blue-600">
+  <div className="card w-[80%] md:w-96 bg-base-100 border border-blue-600">
     <div className="card-body">
       {/* <span className="badge badge-xs badge-warning">Most Popular</span> */}
       <div className="flex justify-between">

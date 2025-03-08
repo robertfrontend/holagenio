@@ -152,6 +152,12 @@ const FloatedChat = ({
           "
       >
         <option value="">Selecciona una opción</option>
+        <option value="Ayudame con mi Gramatica">
+          Ayúdame con mi Gramatica
+        </option>
+        <option value="Ayudame a escribir un post para las redes sociales">
+          Ayúdame a escribir un post para las redes sociales
+        </option>
         <option value="Ayudame con mi Ingles">Ayúdame con mi Inglés</option>
         <option value="Ayudame con mi Matemáticas">
           Ayúdame con mi Matemáticas
