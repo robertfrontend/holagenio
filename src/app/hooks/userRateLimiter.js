@@ -1,8 +1,35 @@
 import { useState, useEffect } from "react";
+import { UserAuth } from "../context/AuthContext";
+import { GetDataUserById } from "@/api";
 
-const useRateLimiter = (limit, windowTime) => {
+const useRateLimiter = (defaultLimit, windowTime) => {
+  const { user } = UserAuth();
+
   const [requestCount, setRequestCount] = useState(0);
   const [isLimited, setIsLimited] = useState(false);
+  const [userInfo, setUserInfo] = useState("");
+  const [limit, setLimit] = useState(defaultLimit);
+
+  useEffect(() => {
+    if (user) {
+      handleDBUser(user.uid);
+    } else {
+      console.log("no user rate limit");
+    }
+  }, [user]);
+
+  const handleDBUser = async (id) => {
+    const userResponse = await GetDataUserById(id);
+    setUserInfo(userResponse);
+
+    if (userResponse && userResponse.plan === "Standard") {
+      setLimit(50);
+      console.log("Change plan to Standard");
+    } else {
+      setLimit(defaultLimit);
+      console.log("Free plan");
+    }
+  };
 
   useEffect(() => {
     const storedCount = parseInt(localStorage.getItem("requestCount")) || 0;
@@ -19,8 +46,10 @@ const useRateLimiter = (limit, windowTime) => {
 
     if (storedCount >= limit) {
       setIsLimited(true);
+    } else {
+      setIsLimited(false);
     }
-  }, [limit, windowTime]);
+  }, [windowTime, limit]);
 
   const incrementRequestCount = () => {
     const newCount = requestCount + 1;
@@ -29,6 +58,8 @@ const useRateLimiter = (limit, windowTime) => {
 
     if (newCount >= limit) {
       setIsLimited(true);
+    } else {
+      setIsLimited(false);
     }
   };
 

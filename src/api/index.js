@@ -11,6 +11,18 @@ import {
   addDoc,
 } from "firebase/firestore";
 
+export const GetDataUserById = async (id) => {
+  try {
+    const docRef = doc(db, "users", id);
+    const data = await getDoc(docRef);
+
+    return data.data();
+  } catch (error) {
+    console.log("error en get del usuario");
+    return error;
+  }
+};
+
 export async function readDocuments(document) {
   const itemsRef = collection(db, document);
   const snapshot = await getDocs(itemsRef);

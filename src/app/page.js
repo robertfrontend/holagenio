@@ -1,17 +1,27 @@
 "use client";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 
 import { ChevronRight, ChefHat } from "lucide-react";
 import { UserAuth } from "./context/AuthContext";
+import { GetDataUserById } from "@/api";
 
 export default function Home() {
   const { user, logOut } = UserAuth();
 
+  const [userInfo, setUserInfo] = useState("");
+
   useEffect(() => {
-    console.log(user, "user loging");
+    if (user) {
+      handleDBUser(user.uid);
+    }
   }, [user]);
+
+  const handleDBUser = async (id) => {
+    const userResponse = await GetDataUserById(id);
+    setUserInfo(userResponse);
+  };
 
   return (
     <main className="flex flex-col min-h-screen bg-background w-full md:mx-auto pb-[8em] pt-[6em] md:pt-[10em] relative px-2 md:px-4">
@@ -35,10 +45,16 @@ export default function Home() {
 
           <div className="my-4">
             {user && (
-              <h4 className="text-xl text-gray-700">
-                Welcome back!{" "}
-                <span className=" font-bold">{user.displayName}</span>{" "}
-              </h4>
+              <>
+                <h4 className="text-xl text-gray-700">
+                  Welcome back!{" "}
+                  <span className=" font-bold">{user.displayName}</span>{" "}
+                </h4>
+                <span className="badge px-4 py-3 bg-blue-600 text-white">
+                  {" "}
+                  Plan {userInfo && userInfo.plan}
+                </span>
+              </>
             )}
           </div>
 

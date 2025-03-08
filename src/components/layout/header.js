@@ -11,9 +11,7 @@ const Header = () => {
   const { user, logOut } = UserAuth();
   const router = useRouter();
 
-  useEffect(() => {
-    console.log(user, "user loging HEADERRRR");
-  }, [user]);
+  useEffect(() => {}, [user]);
 
   const handleLogout = async () => {
     const auth = getAuth();
