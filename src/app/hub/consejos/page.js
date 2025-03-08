@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import GetEnglishAPI from "./api/index";
+import GetConsejosAPI from "./api/index";
 import Markdown from "markdown-to-jsx";
 import MainCard from "@/components/hub/MainCard";
 import { Send } from "lucide-react";
@@ -28,7 +28,7 @@ export default function Page() {
     incrementRequestCount();
 
     setIsLoaded(true);
-    const response = await GetEnglishAPI(value);
+    const response = await GetConsejosAPI(value);
     setTextResponse(response);
     setIsLoaded(false);
   };
@@ -37,8 +37,8 @@ export default function Page() {
     <main className="flex flex-col min-h-screen bg-background w-full md:mx-auto pt-[10em] relative px-2 md:px-4">
       <MainCard
         className="flex flex-col items-center justify-center w-[100%] md:w-[600px] min-h-[40vh] mx-auto pb-10 border border-gray-200 rounded-md bg-white shadow-lg"
-        title={"🇺🇸 Learn English"}
-        description={`Traduce, aprende frases y nuevas palabras todos los días.`}
+        title={"☮️ Consejos personales y emocionales"}
+        description={`Chat de consejos personales y emocionales`}
       >
         {/* -------- Form  --------*/}
         <div className="relative w-full flex flex-col justify-center items-center mt-6">
@@ -46,7 +46,7 @@ export default function Page() {
             type="text"
             className="border border-gray-300 rounded-md p-2 mb-2 w-[90%] 
             focus:outline-none focus:ring-2 focus:ring-blue-500 pr-20"
-            placeholder="Ayudame con mi ingles"
+            placeholder="En que necesitas ayuda?"
             value={input}
             min={2}
             max={10}
@@ -69,31 +69,7 @@ export default function Page() {
             </button>
           )}
         </div>
-        <p className="text-gray-600 text-[12px] font-light mt-2">
-          Sugerencias:
-        </p>
-        <div className="mt-4 flex gap-2 mb-2">
-          <div
-            className="badge-lg cursor-pointer bg-blue-50 text-blue-600"
-            onClick={() => handleSend("Nuevas frasses")}
-          >
-            {" "}
-            Nuevas frasses
-          </div>
-          <div
-            className="badge-lg cursor-pointer bg-blue-50 text-blue-600"
-            onClick={() => handleSend("Nuevas palabras")}
-          >
-            {" "}
-            Nuevas palabras
-          </div>
-          <div
-            className="badge-lg cursor-pointer bg-blue-50 text-blue-600"
-            onClick={() => handleSend("Conversación básica")}
-          >
-            Conversación básica
-          </div>
-        </div>
+
         {/* -------- Form End --------*/}
 
         {isLoaded && (
@@ -105,7 +81,7 @@ export default function Page() {
           </div>
         )}
 
-        <div className="pb-2 pt-4 w-full px-8">
+        <div className="pb-2 pt-2 w-full px-8">
           {textresponse && (
             <>{textresponse && <MarkDownComponent response={textresponse} />}</>
           )}

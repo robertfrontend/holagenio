@@ -118,6 +118,11 @@ const SubjectCards = () => {
       description: "Practica y mejora tu inglés de forma interactiva.",
     },
     {
+      href: "/hub/consejos",
+      title: "☮️ Chat de consejos personales y emocionales",
+      description: "Chat de consejos personales y emocionales",
+    },
+    {
       href: "/",
       title: "🩻 Analizar imagen",
       description: "Entiende cualquier documento o texto que no entiendas.",
@@ -142,31 +147,6 @@ const SubjectCards = () => {
       // description: "Practica y mejora tu inglés de forma interactiva.",
       disabled: true,
     },
-    {
-      href: "/",
-      title: "Afirmaciones, frases",
-      // description: "Practica y mejora tu inglés de forma interactiva.",
-      disabled: true,
-    },
-    {
-      href: "/",
-      title: "🔨 Chat Personalizado",
-      // description: "Crea y adapta tu chat con IA a tus necesidades.",
-      disabled: true,
-    },
-    {
-      href: "/",
-      title: "🧍‍♂️ Mi mejor amigo",
-      // description:
-      //   "Chat para que interactues con una persona que te escuche y te de consejos",
-      disabled: true,
-    },
-    {
-      href: "/",
-      title: "Traducción de documentos",
-      disabled: true,
-    },
-    { href: "/", title: "Resumir documentos", disabled: true },
   ];
 
   return (

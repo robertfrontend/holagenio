@@ -10,6 +10,8 @@ const useRateLimiter = (defaultLimit, windowTime) => {
   const [userInfo, setUserInfo] = useState("");
   const [limit, setLimit] = useState(defaultLimit);
 
+  const fullRateLimit = 200;
+
   useEffect(() => {
     if (user) {
       handleDBUser(user.uid);
@@ -23,7 +25,7 @@ const useRateLimiter = (defaultLimit, windowTime) => {
     setUserInfo(userResponse);
 
     if (userResponse && userResponse.plan === "Standard") {
-      setLimit(50);
+      setLimit(fullRateLimit);
       console.log("Change plan to Standard");
     } else {
       setLimit(defaultLimit);
