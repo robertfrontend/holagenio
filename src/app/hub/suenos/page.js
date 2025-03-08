@@ -6,6 +6,7 @@ import MainCard from "@/components/hub/MainCard";
 import { Send } from "lucide-react";
 import useRateLimiter from "@/app/hooks/userRateLimiter";
 import ModalSuscription from "@/components/hub/ModalSuscription";
+import HubChat from "@/components/hub/HubChat";
 
 export default function Page() {
   const [input, setInput] = useState("");
@@ -41,35 +42,14 @@ export default function Page() {
         description={`Escribe tu sueño y averiguaremos el significado`}
       >
         {/* -------- Form  --------*/}
-        <div className="relative w-full flex flex-col justify-center items-center mt-6">
-          <textarea
-            type="text"
-            className="border border-gray-300 rounded-md p-2 mb-2 w-[90%] 
-            focus:outline-none focus:ring-2 focus:ring-blue-500 pr-20"
-            placeholder=""
-            value={input}
-            min={2}
-            max={10}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyPress={(e) => {
-              if (e.key === "Enter") {
-                !isLoaded && handleSend(e.target.value);
-              }
-            }}
-          />
-          {!isLoaded && (
-            <button
-              className="text-white rounded-md p-2 absolute top-0 bottom-0 right-10"
-              onClick={() => {
-                console.log("Button Clicked");
-                handleSend(input);
-              }}
-            >
-              <Send size={20} className="text-blue-600 ml-4" />
-            </button>
-          )}
-        </div>
-
+        <HubChat
+          input={input}
+          setInput={setInput}
+          placeholder={"Place hodler hola"}
+          handleSend={handleSend}
+          isLoaded={isLoaded}
+          color={"text-gray-600"}
+        />
         {/* -------- Form End --------*/}
 
         {isLoaded && (

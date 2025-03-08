@@ -6,6 +6,7 @@ import GetRecipe from "./api";
 import MainCard from "@/components/hub/MainCard";
 import useRateLimiter from "@/app/hooks/userRateLimiter";
 import ModalSuscription from "@/components/hub/ModalSuscription";
+import HubChat from "@/components/hub/HubChat";
 
 export default function Page() {
   const [input, setInput] = useState("");
@@ -40,32 +41,21 @@ export default function Page() {
 
   return (
     <main className="flex flex-col min-h-screen bg-background w-full md:mx-auto pt-[6em] md:pt-[10em] relative px-2 md:px-4">
-      <MainCard title={` 🧑‍🍳 Recetas rápida de comida`}>
+      <MainCard
+        title={` 🧑‍🍳 Recetas rápida de comida`}
+        description={
+          "Encuentra recetas rápidas y fáciles para cualquier ocasión. Ya sea desayuno, almuerzo o cena, tenemos la receta perfecta para ti."
+        }
+      >
         {/* -------- Form  --------*/}
-        <div className="relative w-full flex flex-col justify-center items-center mt-6">
-          <input
-            type="text"
-            className="border border-gray-300 rounded-md p-2 mb-2 w-[90%]"
-            placeholder="Desayuno sencillo"
-            value={input}
-            min={2}
-            max={10}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyPress={(e) => {
-              if (e.key === "Enter") {
-                !isLoaded && handleSend(e.target.value);
-              }
-            }}
-          />
-          {!isLoaded && (
-            <button
-              className=" text-white rounded-md p-2 absolute top-0 bottom-0 right-10"
-              onClick={() => handleSend(input)}
-            >
-              <Send size={20} className="text-red-600 ml-4" />
-            </button>
-          )}
-        </div>
+        <HubChat
+          input={input}
+          setInput={setInput}
+          placeholder={"Escribe lo que deseas comer"}
+          handleSend={handleSend}
+          isLoaded={isLoaded}
+          color={"text-red-600"}
+        />
         <p className="text-gray-600 text-[12px] font-light mt-2">
           Sugerencias:
         </p>

@@ -9,11 +9,11 @@ const MainCard = ({ children, title, description }) => {
           <ArrowLeft size={18} /> Volver atrás
         </Link>
       </div>
-      <header className="px-4 pt-4 md:px-10 text-center">
+      <header className="px-4 pt-4 md:px-6 text-center">
         <h1 className="text-3xl md:text-4xl font-bold pt-4 text-gray-700">
           {title || "title example"}
         </h1>
-        <p className="mt-2 font-light">
+        <p className="mt-2 font-light px-2">
           {description ||
             ` Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque enim,
                     quam totam quibusdam sapiente hic placeat!`}
