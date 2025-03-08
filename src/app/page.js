@@ -123,6 +123,11 @@ const SubjectCards = () => {
       description: "Chat de consejos personales y emocionales",
     },
     {
+      href: "/hub/suenos",
+      title: "🛌 Significado de los sueños",
+      description: "Significado de los sueños",
+    },
+    {
       href: "/",
       title: "🩻 Analizar imagen",
       description: "Entiende cualquier documento o texto que no entiendas.",
