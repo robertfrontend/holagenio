@@ -142,44 +142,21 @@ const FloatedChat = ({
     <div
       className="flex flex-col border rounded-xl shadow-md 
        mx-2 md:mx-2 px-2 pb-2
-        fixed bottom-0 left-0 right-0 z-10 md:static bg-white
+        fixed bottom-2  left-0 right-0 z-10 md:static bg-white
       "
     >
-      <select
-        onChange={(e) => handleHelperSelect(e.target.value)}
-        className="p-2 mr-2 w-full pl-4 pt-2 focus:outline-none font-light
-            bg-white border border-blue-100 my-2 rounded px-2
-          "
-      >
-        <option value="">Selecciona una opción</option>
-        <option value="Ayudame con mi Gramatica">
-          Ayúdame con mi Gramatica
-        </option>
-        <option value="Ayudame a escribir un post para las redes sociales">
-          Ayúdame a escribir un post para las redes sociales
-        </option>
-        <option value="Ayudame con mi Ingles">Ayúdame con mi Inglés</option>
-        <option value="Ayudame con mi Matemáticas">
-          Ayúdame con mi Matemáticas
-        </option>
-        <option value="Ayudame con mi Ciencias">Ayúdame con mi Ciencias</option>
-        <option value="Ayudame con mi Historia">Ayúdame con mi Historia</option>
-      </select>
-
-      <div className="border bg-white mt-2 flex flex-row items-center rounded">
+      <div className=" bg-white mt-2 flex flex-row items-center rounded">
         <input
           type="text"
           value={input}
-          min={2}
-          max={10}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={(e) => {
             if (e.key === "Enter") {
               !isLoaded && handleSend();
             }
           }}
-          placeholder="Escribe tu mensaje..."
-          className="flex-1 p-2  rounded mr-2 w-full pl-4 pt-2 pb-12 focus:outline-none
+          placeholder="Pregunta lo que sea..."
+          className="flex-1 p-2  rounded mr-2 w-full pl-2 pt-2 pb-12 focus:outline-none
           font-light 
           "
         />
@@ -187,7 +164,6 @@ const FloatedChat = ({
           onClick={() => !isLoaded && handleSend()}
           className="p-2 text-blue-600 rounded pr-4 flex items-center"
         >
-          Send
           <Send size={20} className="text-blue-600 ml-2" />
         </button>
       </div>
@@ -199,7 +175,7 @@ const Suggestions = ({ handleSugestions }) => {
   return (
     <section className="text-center py-10">
       <div>
-        <h1 className="text-3xl">Good Morning !</h1>
+        <h1 className="text-3xl">¿En qué puedo ayudarle?</h1>
       </div>
       <div className="grid md:grid-cols-3 gap-4 justify-around my-4 text-md">
         <div
@@ -210,9 +186,9 @@ const Suggestions = ({ handleSugestions }) => {
         </div>
         <div
           className="border border-gray-200 p-4 rounded-lg cursor-pointer"
-          onClick={() => handleSugestions("Quien fue Juan Pablo Duarte?")}
+          onClick={() => handleSugestions("Escribe un cuento por mi")}
         >
-          <p className="text-center">¿Quien fue Juan Pablo Duarte?</p>
+          <p className="text-center">Escribe un cuento por mi</p>
         </div>
         <div
           className="border border-gray-200 p-4 rounded-lg cursor-pointer"
