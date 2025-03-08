@@ -29,7 +29,7 @@ export default function AuthForm() {
     console.log(user, "user loging");
 
     if (user) {
-      window.location.href = "/profile";
+      window.location.href = "/";
     }
   }, [user]);
 
