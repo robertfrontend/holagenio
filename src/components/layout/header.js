@@ -70,7 +70,7 @@ const Header = () => {
           <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box 
-            z-[1] mt-3 w-52 p-2 shadow"
+            z-[1] mt-3 w-[300px] p-2 shadow"
           >
             <li className="py-2">
               {user ? (
@@ -79,9 +79,9 @@ const Header = () => {
                   Profile
                 </Link>
               ) : (
-                <Link href={"/auth"} className="text-xl">
+                <Link href={"/auth"} className="text-lg">
                   {" "}
-                  Login
+                  Iniciar sesión / Crear cuenta
                 </Link>
               )}
             </li>

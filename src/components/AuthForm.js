@@ -78,10 +78,11 @@ export default function AuthForm() {
         backgroundSize: "100%",
       }}
     >
-      <div className="text-center p-6 rounded-xl shadow-md w-[100%]  md:w-[600px] min-h-[40vh] justify-center items-center flex flex-col bg-white">
-        <h2 className="text-xl font-bold text-gray-800 mb-4">
-          Inicio de sesión/Registro requerido
+      <div className="text-center p-6 rounded-xl shadow-md w-[100%] md:w-[400px] min-h-[30vh] justify-center items-center flex flex-col bg-white">
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">
+          Inicio de sesión / Registro
         </h2>
+        <p>Bienvenido de nuevo Inicia sesión para continuar tu viaje</p>
         <button
           onClick={handleGoogleSignIn}
           className="flex items-center justify-center w-full px-4 py-2 mt-4 text-white bg-blue-500 

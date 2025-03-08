@@ -118,7 +118,7 @@ const SubjectCards = () => {
       description: "Practica y mejora tu inglés de forma interactiva.",
     },
     {
-      href: "/hub/recetas-ai",
+      href: "/",
       title: "🩻 Analizar imagen",
       description: "Entiende cualquier documento o texto que no entiendas.",
       // icon: <ChefHat />,

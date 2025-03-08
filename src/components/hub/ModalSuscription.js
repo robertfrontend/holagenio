@@ -15,7 +15,7 @@ export default function ModalSuscription() {
           </h3>
           <p className=" md:py-4 text-md font-light">
             Si desea seguir utilizando la plataforma de forma ilimitada,
-            adquiera el plan estándar el plan estándar.
+            adquiera el plan estándar.
           </p>
 
           <div
@@ -26,6 +26,10 @@ export default function ModalSuscription() {
               Plan Estandar
             </h3>
             <ul className="text-gray-600 pt-4 text-left md:text-center w-full">
+              <li className="mb-2 text-md font-light flex gap-2 justify-start md:justify-center">
+                <Check />
+                +500 respuestas diarías
+              </li>
               <li className="mb-2 text-md font-light flex gap-2 justify-start md:justify-center">
                 <Check />
                 Todas las herramientas disponibles
