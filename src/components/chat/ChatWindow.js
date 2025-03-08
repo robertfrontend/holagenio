@@ -142,7 +142,7 @@ const FloatedChat = ({
     <div
       className="flex flex-col border rounded-xl shadow-md 
        mx-2 md:mx-2 px-2 pb-2
-        fixed bottom-6 left-0 right-0 z-10 md:static bg-white
+        fixed bottom-0 left-0 right-0 z-10 md:static bg-white
       "
     >
       <select
