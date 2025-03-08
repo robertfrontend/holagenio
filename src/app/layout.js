@@ -42,12 +42,12 @@ export default function RootLayout({ children }) {
             className="relative full"
             style={{
               backgroundImage:
-                "url(https://i.postimg.cc/tJVbSv8D/0a352d89-c2a0-478a-9131-7823fadb4681.jpg)",
+                "url(https://i.postimg.cc/Y0152nXG/sl-072622-51930-13.jpg)",
               backgroundRepeat: "repeat",
-              backgroundSize: "100%",
+              backgroundSize: "60%",
             }}
           >
-            {children}
+            <div className="bg-[#ffffffd6]">{children}</div>
           </div>
           <div className="text-center py-8">
             <span className="text-sm text-gray-500 sm:text-center">

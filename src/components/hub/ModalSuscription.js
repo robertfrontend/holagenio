@@ -27,19 +27,19 @@ export default function ModalSuscription() {
             </h3>
             <ul className="text-gray-600 pt-4 text-left md:text-center w-full">
               <li className="mb-2 text-md font-light flex gap-2 justify-start md:justify-center">
-                <Check />
-                +500 respuestas diarías
+                <Check className="text-green-600" />
+                +1000 respuestas diarías
               </li>
               <li className="mb-2 text-md font-light flex gap-2 justify-start md:justify-center">
-                <Check />
+                <Check className="text-green-600" />
                 Todas las herramientas disponibles
               </li>
               <li className="mb-2 text-md font-light flex gap-2 justify-start md:justify-center">
-                <Check />
+                <Check className="text-green-600" />
                 Acceso temprano a nuevas herramientas
               </li>
               <li className="mb-2 text-md font-light flex gap-2 justify-start md:justify-center">
-                <Check />
+                <Check className="text-green-600" />
                 Guarda tus respuestas de cada chat.
               </li>
             </ul>

@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 
 import { ChevronRight, ChefHat } from "lucide-react";
 import { UserAuth } from "./context/AuthContext";
@@ -64,11 +64,114 @@ export default function Home() {
           <p className="text-[14px] text-blue-500">
             Utilizamos lo ultimo de AI para nuestro modelos
           </p>
+          <div>
+            <div class="pb-10">
+              <h1 className="text-3xl font-bold">Nuestros precios</h1>
+            </div>
+            <div class="flex gap-10">
+              <FreeCard />
+              <PremiumCard />
+            </div>
+          </div>
         </div>
       </section>
     </main>
   );
 }
+
+const FreeCard = () => (
+  <div className="card w-96 bg-base-100 shadow-sm border">
+    <div className="card-body">
+      {/* <span className="badge badge-xs badge-warning">Most Popular</span> */}
+      <div className="flex justify-between">
+        <h2 className="text-3xl font-bold">Gratis</h2>
+        <span className="text-xl">$0/mo</span>
+      </div>
+      <ul className="mt-6 flex flex-col gap-2 text-xs">
+        <li className="flex justify-center items-start text-md">
+          <Check size={18} className="text-green-600 mx-2" />
+          <span>10 respuestas diarías</span>
+        </li>
+        <li className="flex justify-center items-start text-md">
+          <Check size={18} className="text-green-600 mx-2" />
+          <span>Todas las herramientas disponibles</span>
+        </li>
+        <li className="flex justify-center items-start text-md">
+          <Check size={18} className="text-gray-600 mx-2" />
+          <span className="line-through">
+            {" "}
+            Acceso temprano a nuevas herramientas
+          </span>
+        </li>
+
+        <li className="flex justify-center items-start text-md">
+          <Check size={18} className="text-gray-600 mx-2" />
+          <span className="line-through">
+            {" "}
+            Guarda tus respuestas de cada chat
+          </span>
+        </li>
+        <li className="flex justify-center items-start text-md">
+          <Check size={18} className="text-gray-600 mx-2" />
+          <span className="line-through"> Sin publicidad</span>
+        </li>
+      </ul>
+      <div className="text-center mt-2">
+        <div
+          className=" text-gray-400  py-2 px-10 rounded-md 
+                 w-full d-block"
+        >
+          Plan Actual
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const PremiumCard = () => (
+  <div className="card w-96 bg-base-100 shadow-sm border border-blue-600">
+    <div className="card-body">
+      {/* <span className="badge badge-xs badge-warning">Most Popular</span> */}
+      <div className="flex justify-between">
+        <h2 className="text-3xl font-bold">Premium</h2>
+        <span className="text-xl">$8/mo</span>
+      </div>
+      <ul className="mt-6 flex flex-col gap-2 text-xs">
+        <li className="flex justify-center items-start text-md">
+          <Check size={18} className="text-green-600 mx-2" />
+          <span>+1000 respuestas diarías</span>
+        </li>
+        <li className="flex justify-center items-start text-md">
+          <Check size={18} className="text-green-600 mx-2" />
+          <span>Todas las herramientas disponibles</span>
+        </li>
+        <li className="flex justify-center items-start text-md">
+          <Check size={18} className="text-green-600 mx-2" />
+          <span> Acceso temprano a nuevas herramientas</span>
+        </li>
+        <li className="flex justify-center items-start text-md">
+          <Check size={18} className="text-green-600 mx-2" />
+          <span> Guarda tus respuestas de cada chat</span>
+        </li>
+        <li className="flex justify-center items-start text-md">
+          <Check size={18} className="text-green-600 mx-2" />
+          <span>Sin publicidad</span>
+        </li>
+      </ul>
+      <div className="text-center mt-2">
+        <a href="https://buy.stripe.com/9AQcOP4AjcmO9iM7sK">
+          <button
+            className="bg-blue-500 text-white py-2 px-10 rounded-md hover:bg-blue-600
+                 w-full d-block"
+          >
+            Suscribirse
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+);
+
 const SubjectCard = ({ href, title, description, disabled }) => (
   <Link
     href={href || "/"}
@@ -112,11 +215,7 @@ const SubjectCards = () => {
       description: "Recetas rápidas y prácticas para cocinar fácil y sabroso.",
       // icon: <ChefHat />,
     },
-    {
-      href: "/hub/english",
-      title: "🇺🇸 Chat para inglés",
-      description: "Practica y mejora tu inglés de forma interactiva.",
-    },
+
     {
       href: "/hub/consejos",
       title: "☮️ Chat de consejos personales y emocionales",
@@ -126,6 +225,11 @@ const SubjectCards = () => {
       href: "/hub/suenos",
       title: "🛌 Significado de los sueños",
       description: "Significado de los sueños",
+    },
+    {
+      href: "/hub/english",
+      title: "🇺🇸 Chat para inglés",
+      description: "Practica y mejora tu inglés de forma interactiva.",
     },
     {
       href: "/",
