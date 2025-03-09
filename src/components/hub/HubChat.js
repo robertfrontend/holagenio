@@ -17,8 +17,6 @@ export default function HubChat({
             focus:outline-none  pr-20"
         placeholder={placeholder || "Placeholder"}
         value={input}
-        min={2}
-        max={10}
         onChange={(e) => setInput(e.target.value)}
         onKeyPress={(e) => {
           if (e.key === "Enter") {

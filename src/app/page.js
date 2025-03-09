@@ -65,10 +65,10 @@ export default function Home() {
             Utilizamos lo ultimo de AI para nuestro modelos
           </p>
           <div>
-            <div class="pb-10">
-              <h1 className="text-3xl font-bold">Nuestros precios</h1>
+            <div className="pb-10">
+              <h1 classNameName="text-3xl font-bold">Nuestros precios</h1>
             </div>
-            <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-10">
+            <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-10">
               <FreeCard />
               <PremiumCard />
             </div>

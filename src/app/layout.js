@@ -13,7 +13,32 @@ export default function RootLayout({ children }) {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Hola Genio</title>
-        <meta name="description" content="This is the description of my app." />
+        <meta
+          name="description"
+          content="Herramientas de Inteligencia Artificial simples, rápidas y asequibles para el día a día."
+        />
+
+        {/* Meta */}
+        <meta property="og:url" content="https://holagenio.com/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="HolaGenio" />
+        <meta
+          property="og:description"
+          content="Herramientas de Inteligencia Artificial simples, rápidas y asequibles para el día a día."
+        />
+        <meta property="og:image" content="./image-preview.png" />
+
+        <meta name="twitter:card" content="./image-preview.png" />
+        <meta property="twitter:domain" content="holagenio.com" />
+        <meta property="twitter:url" content="https://holagenio.com/" />
+        <meta name="twitter:title" content="HolaGenio" />
+        <meta
+          name="twitter:description"
+          content="Herramientas de Inteligencia Artificial simples, rápidas y asequibles para el día a día."
+        />
+        <meta name="twitter:image" content="./image-preview.png" />
+        {/* Meta */}
+
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="apple-touch-icon"
