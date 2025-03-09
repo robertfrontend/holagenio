@@ -18,10 +18,7 @@ export default function ModalSuscription() {
             adquiera el plan estándar.
           </p>
 
-          <div
-            className="bg-white w-full min-h-[20vh] my-2 rounded-md py-4 px-4 shadow-sm border border-gray-200
-                                    pb-4  text-center"
-          >
+          <div className="bg-white w-full min-h-[20vh] my-2 rounded-md py-4 px-4 shadow-sm border border-gray-200 pb-4  text-center">
             <h3 className="font-semibold text-2xl text-gray-800">
               Plan Estandar
             </h3>

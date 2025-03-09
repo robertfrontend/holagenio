@@ -50,31 +50,6 @@ export default function Page() {
           color={"text-violet-600"}
         />
 
-        <p className="text-gray-600 text-[12px] font-light mt-2">
-          Sugerencias:
-        </p>
-        <div className="mt-4 flex gap-2 mb-2">
-          <div
-            className="badge-lg cursor-pointer bg-violet-50 text-violet-600"
-            onClick={() => handleSend("Consejo de vida")}
-          >
-            {" "}
-            Consejo de vida
-          </div>
-          <div
-            className="badge-lg cursor-pointer bg-violet-50 text-violet-600"
-            onClick={() => handleSend("Consejo de salud")}
-          >
-            {" "}
-            Consejo de salud
-          </div>
-          <div
-            className="badge-lg cursor-pointer bg-violet-50 text-violet-600"
-            onClick={() => handleSend("Consejo financiero")}
-          >
-            Consejo financiero
-          </div>
-        </div>
         {/* -------- Form End --------*/}
 
         {isLoaded && (
