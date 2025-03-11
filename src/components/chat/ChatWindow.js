@@ -48,7 +48,6 @@ const ChatWindow = () => {
 
     const prompt = helper ? `${helper}: ${handletext}` : handletext;
 
-
     setMessages((prevMessages) => [
       ...prevMessages,
       {
@@ -56,7 +55,6 @@ const ChatWindow = () => {
         content: isResume ? "Resumiendo respuesta..." : handletext,
       }
     ])
-
 
     const chatHistory = [...messages]
     const response = await getChatAI(prompt, chatHistory);

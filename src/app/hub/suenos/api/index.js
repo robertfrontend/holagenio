@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const GetDreamsAPI = async (prompt) => {
+const GetDreamsAPI = async (prompt, chatHistory = []) => {
   const apiKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY;
 
   const systemprompt = `Eres un asistente especializado en interpretar los significados
@@ -21,6 +21,7 @@ const GetDreamsAPI = async (prompt) => {
     {
       messages: [
         { role: "system", content: systemprompt },
+        ...chatHistory,
         { role: "user", content: prompt },
       ],
       max_tokens: 400,

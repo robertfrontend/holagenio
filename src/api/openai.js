@@ -37,26 +37,7 @@ const getChatAI = async (prompt, chatHistory = []) => {
       max_tokens: 800,
       model: "gpt-4o-mini",
       store: true,
-      // response_format: {
-      //   type: "json_schema",
-      //   json_schema: {
-      //     name: "title",
-      //     schema: {
-      //       type: "object",
-      //       properties: {
-      //         title: {
-      //           type: "string",
-      //           description: "The title of the response.",
-      //         },
-      //         response: {
-      //           type: "string",
-      //           description: "The complete response formatted in markdown.",
-      //         },
-      //       },
-      //       additionalProperties: false,
-      //     },
-      //   },
-      // },
+
     },
     {
       headers: {

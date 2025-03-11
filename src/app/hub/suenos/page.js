@@ -12,9 +12,10 @@ export default function Page() {
   const [input, setInput] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
   const [textresponse, setTextResponse] = useState("");
+  const [messages, setMessages] = useState([]);
 
   const limit = 10;
-  const windowTime = 60 * 60 * 1000; // Ventana de tiempo en milisegundos (1 hora)
+  const windowTime = 60 * 60 * 1000;
   const { requestCount, isLimited, incrementRequestCount } = useRateLimiter(
     limit,
     windowTime
@@ -29,7 +30,20 @@ export default function Page() {
     incrementRequestCount();
 
     setIsLoaded(true);
-    const response = await GetDreamsAPI(value);
+
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      {
+        role: "user",
+        content: input,
+      }
+    ])
+
+    const chatHistory = [...messages]
+
+    console.log(chatHistory, "chatHistory")
+
+    const response = await GetDreamsAPI(value, chatHistory);
     setTextResponse(response);
     setIsLoaded(false);
   };
