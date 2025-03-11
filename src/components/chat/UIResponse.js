@@ -18,13 +18,14 @@ const UIResponse = ({ msg, index, handleResumeResponse }) => {
     <h4 {...props}>{children}</h4>
   );
   const PComponent = ({ children, ...props }) => <p {...props}>{children}</p>;
+
   return (
     <div
       key={index}
       className={`mb-2 p-2  flex flex-col`}
       id={`response-${index}`}
     >
-      {msg.sender === "ai" && (
+      {msg.role === "system" && (
         <div className="pt-4 pb-10">
           <header className="flex items-center font-bold">
             <img
@@ -34,9 +35,7 @@ const UIResponse = ({ msg, index, handleResumeResponse }) => {
             />
             Genio AI
           </header>
-          <h2 className="text-xl md:text-2xl font-semibold mt-4 border-b mb-6">
-            {msg.title}
-          </h2>
+
           <Markdown
             className="text-lg"
             options={{
@@ -98,7 +97,7 @@ const UIResponse = ({ msg, index, handleResumeResponse }) => {
               },
             }}
           >
-            {msg.text}
+            {msg.content}
           </Markdown>
           <div className="w-full flex flex-col md:flex-row justify-center items-center">
             <button
@@ -117,9 +116,9 @@ const UIResponse = ({ msg, index, handleResumeResponse }) => {
           </div>
         </div>
       )}
-      {msg.sender === "user" && (
+      {msg.role === "user" && (
         <div className="border border-gray-200 bg-gray-50 text-md md:text-lg py-2 md:py-3 px-6 rounded text-left ml-auto">
-          <p>{msg.text}</p>
+          <p>{msg.content}</p>
         </div>
       )}
     </div>

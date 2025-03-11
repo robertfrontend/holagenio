@@ -16,7 +16,6 @@ const useRateLimiter = (defaultLimit, windowTime) => {
     if (user) {
       handleDBUser(user.uid);
     } else {
-      console.log("no user rate limit");
     }
   }, [user]);
 

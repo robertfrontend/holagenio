@@ -1,8 +1,6 @@
 import axios from "axios";
 
-const handleComplemetal = async (prompt) => {};
-
-const getChatAI = async (prompt) => {
+const getChatAI = async (prompt, chatHistory = []) => {
   const apiKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY;
 
   const systemprompt = `
@@ -26,37 +24,39 @@ const getChatAI = async (prompt) => {
     }
 `;
 
+
   const response = await axios.post(
     "https://api.openai.com/v1/chat/completions",
 
     {
       messages: [
-        { role: "system", content: systemprompt },
+        { role: "system", content: "Asistente increible" },
+        ...chatHistory,
         { role: "user", content: prompt },
       ],
       max_tokens: 800,
       model: "gpt-4o-mini",
       store: true,
-      response_format: {
-        type: "json_schema",
-        json_schema: {
-          name: "title",
-          schema: {
-            type: "object",
-            properties: {
-              title: {
-                type: "string",
-                description: "The title of the response.",
-              },
-              response: {
-                type: "string",
-                description: "The complete response formatted in markdown.",
-              },
-            },
-            additionalProperties: false,
-          },
-        },
-      },
+      // response_format: {
+      //   type: "json_schema",
+      //   json_schema: {
+      //     name: "title",
+      //     schema: {
+      //       type: "object",
+      //       properties: {
+      //         title: {
+      //           type: "string",
+      //           description: "The title of the response.",
+      //         },
+      //         response: {
+      //           type: "string",
+      //           description: "The complete response formatted in markdown.",
+      //         },
+      //       },
+      //       additionalProperties: false,
+      //     },
+      //   },
+      // },
     },
     {
       headers: {
@@ -66,12 +66,7 @@ const getChatAI = async (prompt) => {
     }
   );
 
-  console.log(response, "all response");
-
-  const jsonResponse = JSON.parse(response.data.choices[0].message.content);
-  console.log(jsonResponse, "response json");
-
-  return jsonResponse;
+  return response.data.choices[0].message.content;
 };
 
 export default getChatAI;

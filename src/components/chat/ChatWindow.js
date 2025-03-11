@@ -25,7 +25,6 @@ const ChatWindow = () => {
     windowTime
   );
 
-  useEffect(() => {}, []);
 
   useEffect(() => {
     const meta = document.createElement("meta");
@@ -49,16 +48,24 @@ const ChatWindow = () => {
 
     const prompt = helper ? `${helper}: ${handletext}` : handletext;
 
-    const response = await getChatAI(prompt);
 
     setMessages((prevMessages) => [
       ...prevMessages,
       {
-        sender: "user",
-        text: isResume ? "Resumiendo respuesta..." : handletext,
-      },
-      { sender: "ai", text: response.response, title: response.title },
+        role: "user",
+        content: isResume ? "Resumiendo respuesta..." : handletext,
+      }
+    ])
+
+
+    const chatHistory = [...messages]
+    const response = await getChatAI(prompt, chatHistory);
+
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { role: "system", content: response },
     ]);
+
 
     // Scroll to the loader div
     if (loaderRef.current) {
@@ -77,7 +84,6 @@ const ChatWindow = () => {
   };
 
   const handleResumeResponse = async (message) => {
-    console.log(message, "message to resume");
     handleChatAI(
       `Quiero que me hagas un resumen de este text largo: ${message.text}`,
       true

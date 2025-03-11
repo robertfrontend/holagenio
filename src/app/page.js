@@ -32,10 +32,10 @@ export default function Home() {
               className="w-[150px]"
             />
           </div>
-          <h1 className="text-3xl md:text-4xl mt-0 font-bold mb-4 text-gray-700">
-            AI Sin Complicaciones.
+          <h1 className="text-3xl md:text-4xl mt-0 font-bold mb-4 text-gray-600">
+            Herramientas AI para el día a día.
             <br />
-            Úsala en tu Día a Día
+            <span className="text-blue-600">Sin complicaciones y Gratis</span>
           </h1>
           <p className="text-md md:text-xl text-gray-700 font-light ">
             Herramientas de Inteligencia Artificial simples, rápidas y
@@ -127,6 +127,19 @@ const SubjectCards = () => {
       href: "/hub/english",
       title: "🇺🇸 Chat para inglés",
       description: "Practica y mejora tu inglés de forma interactiva.",
+    },
+    {
+      href: "/",
+      title: "👨‍⚕️ Salud básica",
+      description:
+        "Consejos sobre alimentación, ejercicio o primeros auxilios.",
+      disabled: true,
+    },
+    {
+      href: "/",
+      title: "📄 Generador de CVs y cartas de presentación",
+      description: "Generador de CVs y cartas de presentación",
+      disabled: true,
     },
     {
       href: "/",
