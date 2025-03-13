@@ -11,13 +11,13 @@ import { getDatabase } from "firebase/database";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBEEzQ__uAZy-9UgdNyp9v6owUIaP6SKKY",
-  authDomain: "holagenio-69e33.firebaseapp.com",
-  projectId: "holagenio-69e33",
-  storageBucket: "holagenio-69e33.firebasestorage.app",
-  messagingSenderId: "689478462045",
-  appId: "1:689478462045:web:ba94ae51bd1acd29a73bb4",
-  measurementId: "G-EC7EVQW3LK",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase

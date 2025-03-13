@@ -1,5 +1,3 @@
-import axios from "axios";
-
 import OpenAI from "openai";
 const client = new OpenAI({
   apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
