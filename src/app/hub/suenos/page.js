@@ -15,7 +15,7 @@ export default function Page() {
   const [textresponse, setTextResponse] = useState("");
   const [messages, setMessages] = useState([]);
 
-  const limit = 10;
+  const limit = 100;
   const windowTime = 60 * 60 * 1000;
   const { requestCount, isLimited, incrementRequestCount } = useRateLimiter(
     limit,
