@@ -5,7 +5,7 @@ import useRateLimiter from "@/app/hooks/userRateLimiter";
 import ModalSuscription from "@/components/hub/ModalSuscription";
 
 import UIResponse from "./UIResponse";
-import { getChatAI, GetComplementationAPI } from "@/api/openai";
+import { GetComplementationAPI } from "@/api/openai";
 
 const ChatWindow = () => {
   const [messages, setMessages] = useState([]);
