@@ -96,7 +96,7 @@ Este proyecto está bajo la licencia [MIT](./LICENSE). Puedes usarlo libremente 
 Si tienes preguntas o sugerencias, contáctame:
 
 - **Portfolio**: [robertfrontend.vercel.app](https://robertfrontend.vercel.app/)
-- **Email**: [tuemail@example.com]
-- **Twitter**: [@tuusuario](https://twitter.com/tuusuario)
+- **Email**: [robert02frontend@gmail.com]
+- **Twitter**: [@robertfrontend](https://twitter.com/robertfrontend)
 
 ¡Gracias por apoyar este proyecto Open Source! 🚀
