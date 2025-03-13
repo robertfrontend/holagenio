@@ -50,19 +50,19 @@ npm run dev  # o yarn dev
 ## 🚀 Herramientas disponibles
 
 ✅ **Generador de recetas simples** - Recetas rápidas y prácticas para quienes quieren cocinar fácilmente.
-✅ **Chat para aprender inglés (básico)** - Para practicar vocabulario, preguntas comunes y gramática.
+✅ **Chat para aprender inglés (básico)** - Practica vocabulario, preguntas comunes y gramática.
 ✅ **Generador de descripciones de posts** - Crea textos llamativos y profesionales para redes sociales.
 ✅ **Mejorador de Gramática** - Revisión automática de gramática y ortografía.
-✅ **Chat libre** - Habla libremente con la AI y aprende de lo que quieras.
+✅ **Chat libre** - Habla libremente con la IA y aprende sobre cualquier tema.
 ✅ **Recetas de comida** - Recetas rápidas y prácticas para cocinar fácil y sabroso.
-✅ **Chat de consejos personales y emocionales** - Chat de consejos personales y emocionales.
-✅ **Significado de los sueños** - Significado de los sueños.
+✅ **Chat de consejos personales y emocionales** - Recibe consejos personales y emocionales.
+✅ **Significado de los sueños** - Descubre el significado de tus sueños.
 ✅ **Chat para inglés** - Practica y mejora tu inglés de forma interactiva.
-🚧 **Salud básica** - Consejos sobre alimentación, ejercicio o primeros auxilios. _(Próximamente)_
-🚧 **Generador de CVs y cartas de presentación** - Generador de CVs y cartas de presentación. _(Próximamente)_
-🚧 **Analizar imagen** - Entiende cualquier documento o texto que no entiendas. _(Próximamente)_
-🚧 **Generador de ejercicios rápidos de fitness en casa** - _(Próximamente)_
-🚧 **Generador de ideas para negocios o emprendimientos personales** - *(Próximamente)*utomática de gramática y ortografía.
+🚧 **Salud básica** - Consejos sobre alimentación, ejercicio y primeros auxilios. _(Próximamente)_
+🚧 **Generador de CVs y cartas de presentación** - Crea CVs y cartas de presentación profesionales. _(Próximamente)_
+🚧 **Analizar imagen** - Entiende cualquier documento o texto visual. _(Próximamente)_
+🚧 **Generador de ejercicios rápidos de fitness en casa** - Rutinas de ejercicio para hacer en casa. _(Próximamente)_
+🚧 **Generador de ideas para negocios o emprendimientos personales** - Genera ideas innovadoras para negocios. _(Próximamente)_
 
 ## 🎯 Modelo de monetización
 
