@@ -49,11 +49,9 @@ npm run dev  # o yarn dev
 
 ## 🚀 Herramientas disponibles
 
+- ✅ **Chat libre** - Habla libremente con la IA y aprende sobre cualquier tema.
 - ✅ **Generador de recetas simples** - Recetas rápidas y prácticas para quienes quieren cocinar fácilmente.
 - ✅ **Chat para aprender inglés (básico)** - Practica vocabulario, preguntas comunes y gramática.
-- ✅ **Generador de descripciones de posts** - Crea textos llamativos y profesionales para redes sociales.
-- ✅ **Mejorador de Gramática** - Revisión automática de gramática y ortografía.
-- ✅ **Chat libre** - Habla libremente con la IA y aprende sobre cualquier tema.
 - ✅ **Recetas de comida** - Recetas rápidas y prácticas para cocinar fácil y sabroso.
 - ✅ **Chat de consejos personales y emocionales** - Recibe consejos personales y emocionales.
 - ✅ **Significado de los sueños** - Descubre el significado de tus sueños.
