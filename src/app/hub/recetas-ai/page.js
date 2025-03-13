@@ -13,7 +13,7 @@ export default function Page() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [responseApi, setResponseAPI] = useState("");
 
-  const limit = 10; // Límite de peticiones
+  const limit = 100; // Límite de peticiones
   const windowTime = 60 * 60 * 1000; // Ventana de tiempo en milisegundos (1 hora)
   const { requestCount, isLimited, incrementRequestCount } = useRateLimiter(
     limit,

@@ -18,7 +18,7 @@ const ChatWindow = () => {
 
   const loaderRef = useRef(null);
 
-  const limit = 10; // Límite de peticiones
+  const limit = 100; // Límite de peticiones
   const windowTime = 60 * 60 * 1000; // Ventana de tiempo en milisegundos (1 hora)
   const { requestCount, isLimited, incrementRequestCount } = useRateLimiter(
     limit,

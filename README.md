@@ -64,7 +64,7 @@ npm run dev  # o yarn dev
 
 ## 🎯 Modelo de monetización
 
-- **Plan gratuito (limitado)**: 10 usos diarios en total para todas las herramientas.
+- **Plan gratuito (limitado)**: 100 usos diarios en total para todas las herramientas.
 - **Plan mensual económico**: Acceso ilimitado a todas las herramientas por **$8 dólares al mes**.
 
 ## 🛠️ Uso
