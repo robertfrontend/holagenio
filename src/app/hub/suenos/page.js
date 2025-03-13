@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import GetDreamsAPI from "./api/index";
 import Markdown from "markdown-to-jsx";
 import MainCard from "@/components/hub/MainCard";
 import { Send } from "lucide-react";
