@@ -5,7 +5,7 @@ import useRateLimiter from "@/app/hooks/userRateLimiter";
 import ModalSuscription from "@/components/hub/ModalSuscription";
 
 import UIResponse from "./UIResponse";
-import { getChatAI } from "@/api/openai";
+import { getChatAI, GetComplementationAPI } from "@/api/openai";
 
 const ChatWindow = () => {
   const [messages, setMessages] = useState([]);
@@ -56,7 +56,7 @@ const ChatWindow = () => {
     ]);
 
     const chatHistory = [...messages];
-    const response = await getChatAI(prompt, chatHistory);
+    const response = await GetComplementationAPI(prompt, chatHistory);
 
     setMessages((prevMessages) => [
       ...prevMessages,
