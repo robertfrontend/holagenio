@@ -1,11 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import GetConsejosAPI from "./api/index";
 import Markdown from "markdown-to-jsx";
 import MainCard from "@/components/hub/MainCard";
 import useRateLimiter from "@/app/hooks/userRateLimiter";
 import ModalSuscription from "@/components/hub/ModalSuscription";
 import HubChat from "@/components/hub/HubChat";
+import { GetComplementationAPI } from "@/api/openai";
 
 export default function Page() {
   const [input, setInput] = useState("");
@@ -28,7 +28,14 @@ export default function Page() {
     incrementRequestCount();
 
     setIsLoaded(true);
-    const response = await GetConsejosAPI(value);
+
+    const systemprompt = `Eres un asistente AI amigable y empático que ofrece 
+  consejos personales y emocionales. Tu objetivo principal es escuchar
+  activamente al usuario, entender sus inquietudes y
+  proporcionar recomendaciones útiles y reconfortantes. Siempre responde de manera amable, positiva y alentadora, utilizando un lenguaje cálido y comprensivo. Evita dar diagnósticos médicos o psicológicos específicos; enfócate en sugerencias prácticas, apoyo emocional y motivación. Anima al usuario a sentirse escuchado, apoyado y valorado durante cada interacción.`;
+
+    const response = await GetComplementationAPI(value, [], systemprompt);
+
     setTextResponse(response);
     setIsLoaded(false);
   };

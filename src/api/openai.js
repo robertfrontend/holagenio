@@ -4,12 +4,31 @@ const client = new OpenAI({
   dangerouslyAllowBrowser: true,
 });
 
-const getChatAI = async (prompt, chatHistory = []) => {
+export const getChatAI = async (prompt, chatHistory = []) => {
   const completion = await client.chat.completions.create({
     max_tokens: 800,
     model: "gpt-4o-mini",
     messages: [
       { role: "system", content: "Asistente increible" },
+      ...chatHistory,
+      { role: "user", content: prompt },
+    ],
+  });
+
+  console.log(completion.choices[0].message.content, "complemeentation ");
+  return completion.choices[0].message.content;
+};
+
+export const GetComplementationAPI = async (
+  prompt,
+  chatHistory = [],
+  systemprompt
+) => {
+  const completion = await client.chat.completions.create({
+    max_tokens: 800,
+    model: "gpt-4o-mini",
+    messages: [
+      { role: "system", content: systemprompt || "Asistente increible" },
       ...chatHistory,
       { role: "user", content: prompt },
     ],
@@ -77,5 +96,3 @@ export const SupportChatAI = async (prompt, chatHistory = []) => {
 
   return completion;
 };
-
-export default getChatAI;

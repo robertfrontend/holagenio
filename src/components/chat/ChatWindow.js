@@ -1,4 +1,3 @@
-import getChatAI from "@/api/openai";
 import { Send } from "lucide-react";
 import React, { useEffect, useState, useRef } from "react";
 
@@ -6,6 +5,7 @@ import useRateLimiter from "@/app/hooks/userRateLimiter";
 import ModalSuscription from "@/components/hub/ModalSuscription";
 
 import UIResponse from "./UIResponse";
+import { getChatAI } from "@/api/openai";
 
 const ChatWindow = () => {
   const [messages, setMessages] = useState([]);
@@ -24,7 +24,6 @@ const ChatWindow = () => {
     limit,
     windowTime
   );
-
 
   useEffect(() => {
     const meta = document.createElement("meta");
@@ -53,17 +52,16 @@ const ChatWindow = () => {
       {
         role: "user",
         content: isResume ? "Resumiendo respuesta..." : handletext,
-      }
-    ])
+      },
+    ]);
 
-    const chatHistory = [...messages]
+    const chatHistory = [...messages];
     const response = await getChatAI(prompt, chatHistory);
 
     setMessages((prevMessages) => [
       ...prevMessages,
       { role: "system", content: response },
     ]);
-
 
     // Scroll to the loader div
     if (loaderRef.current) {
