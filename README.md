@@ -1,6 +1,6 @@
 # 🚀 HolaGenio - AI Tools Hub (Open Source)
 
-![HolaGenio Banner](URL_DE_IMAGEN_O_ELIMINAR)
+![HolaGenio Banner](https://i.postimg.cc/GtYfpSmw/image-preview.png)
 
 ## ✨ Descripción
 
