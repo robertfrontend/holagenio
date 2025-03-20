@@ -69,7 +69,7 @@ export default function Page() {
   return (
     <main className="flex flex-col min-h-screen bg-background w-full md:mx-auto pt-[10em] relative px-2 md:px-4">
       <MainCard
-        className="flex flex-col items-center justify-center w-[100%] md:w-[600px] min-h-[40vh] mx-auto pb-10 border border-gray-200 rounded-md bg-white shadow-lg"
+        className="flex flex-col items-center justify-center w-[100%] md:w-[800px] min-h-[40vh] mx-auto pb-10 border border-gray-200 rounded-md bg-white shadow-lg"
         title={"🛌 Significado de los sueños"}
         description={`Escribe tu sueño y averiguaremos el significado`}
       >

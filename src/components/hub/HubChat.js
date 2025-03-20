@@ -14,7 +14,7 @@ export default function HubChat({
       <textarea
         type="text"
         className="border border-gray-300 rounded-md p-2 mb-2 w-[90%] 
-            focus:outline-none  pr-20"
+            focus:outline-none  pr-20 w-full"
         placeholder={placeholder || "Placeholder"}
         value={input}
         onChange={(e) => setInput(e.target.value)}

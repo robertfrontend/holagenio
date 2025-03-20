@@ -40,7 +40,10 @@ export default function Page() {
   };
 
   return (
-    <main className="flex flex-col min-h-screen bg-background w-full md:mx-auto pt-[6em] md:pt-[10em] relative px-2 md:px-4">
+    <main
+      className="flex flex-col min-h-screen bg-background
+     w-full md:mx-auto pt-[6em] md:pt-[10em] relative px-2 md:px-4"
+    >
       <MainCard
         title={` 🧑‍🍳 Recetas rápida de comida`}
         description={

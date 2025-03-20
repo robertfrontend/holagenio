@@ -6,6 +6,7 @@ import { ChevronRight, ChefHat } from "lucide-react";
 import { UserAuth } from "./context/AuthContext";
 import { GetDataUserById } from "@/api";
 
+
 export default function Home() {
   const { user, logOut } = UserAuth();
 
@@ -56,7 +57,6 @@ export default function Home() {
               </>
             )}
           </div>
-
           <div className="w-full pt-4 md:pt-10">
             <SubjectCards />
           </div>
